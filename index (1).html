@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ลอยกระทงกับเอิร์ธ Cooheart 🌙🪷</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --night1:#28194f;
+      --night2:#4d337f;
+      --pink:#ffb8d7;
+      --pink2:#ffd9e9;
+      --gold:#ffd56f;
+      --cream:#fffaf2;
+      --soft:#fff6fb;
+      --water:#8dd2ff;
+      --water2:#4aa2d8;
+      --text:#4a3b63;
+      --card:rgba(255,250,247,.9);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Prompt",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(255,213,111,.18), transparent 18%),
+        radial-gradient(circle at 85% 20%, rgba(255,184,215,.25), transparent 20%),
+        linear-gradient(180deg,#26174c 0%, #50327f 35%, #7a64b3 62%, #f8d7dc 87%, #fff9f0 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .stars, .twinkles{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+    }
+    .stars{
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.95) 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(255,213,111,.95) 1px, transparent 1.7px);
+      background-size:58px 58px, 96px 96px;
+      background-position:0 0, 28px 18px;
+      opacity:.7;
+      mask-image:linear-gradient(to bottom,#000 0,#000 70%,transparent 95%);
+    }
+    .twinkles::before,.twinkles::after{
+      content:"";
+      position:absolute;
+      width:100%;
+      height:100%;
+      background-image: radial-gradient(circle, rgba(255,255,255,.7) 1.2px, transparent 1.8px);
+      background-size:120px 120px;
+      animation: twinkle 8s linear infinite;
+      opacity:.4;
+    }
+    .twinkles::after{animation-delay:-4s}
+    @keyframes twinkle{
+      0%{transform:translateY(0); opacity:.15}
+      50%{opacity:.5}
+      100%{transform:translateY(10px); opacity:.15}
+    }
+    nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px min(6vw,72px);
+      background:rgba(34,24,72,.58);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    nav .logo{
+      font-family:"Mali",cursive;
+      font-weight:700;
+      color:#fffaf6;
+      font-size:1.05rem;
+    }
+    nav .links a{
+      color:#fff8f1;
+      text-decoration:none;
+      margin-left:16px;
+      font-size:.92rem;
+    }
+    header.hero{
+      min-height:92vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:86px 20px 50px;
+      position:relative;
+    }
+    .moon{
+      position:absolute;
+      right:8%;
+      top:88px;
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #fffdf1 0, #fff4c7 45%, #ffe48c 82%);
+      box-shadow:0 0 45px rgba(255,228,140,.58);
+    }
+    .hero-inner{max-width:900px; position:relative; z-index:1}
+    .chip{
+      display:inline-block;
+      background:rgba(255,255,255,.13);
+      color:#fff8f4;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:999px;
+      padding:8px 15px;
+      font-size:.9rem;
+      margin-bottom:18px;
+    }
+    h1{
+      margin:0;
+      font-family:"Mali",cursive;
+      color:white;
+      font-size:clamp(2.4rem,6.6vw,5.2rem);
+      line-height:1.08;
+      text-shadow:0 8px 30px rgba(22,10,51,.35);
+    }
+    .subtitle{
+      max-width:720px;
+      margin:22px auto 28px;
+      color:#fff9f4;
+      line-height:1.9;
+      font-size:1.05rem;
+      font-weight:300;
+    }
+    .name{
+      color:#ffe69c;
+      font-weight:700;
+      text-shadow:0 0 18px rgba(255,214,111,.22);
+    }
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .btn{
+      display:inline-block;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:12px 20px;
+      text-decoration:none;
+      font:600 .95rem "Prompt",sans-serif;
+      transition:.22s ease;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg,var(--pink),#ffd8ab);
+      color:#5e416a;
+      box-shadow:0 10px 24px rgba(57,29,84,.18);
+    }
+    .btn.secondary{
+      background:rgba(255,255,255,.18);
+      color:white;
+      border:1px solid rgba(255,255,255,.24);
+    }
+    .btn:hover{transform:translateY(-2px) scale(1.02)}
+    .tagline{
+      margin-top:18px;
+      font-family:"Mali",cursive;
+      color:#fff4cf;
+      font-size:1.15rem;
+    }
+
+    .float-line{
+      margin-top:34px;
+      font-size:2.2rem;
+      animation: float 4s ease-in-out infinite;
+      filter:drop-shadow(0 8px 10px rgba(24,8,58,.22));
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+
+    section{
+      width:min(1100px,92%);
+      margin:0 auto 42px;
+      position:relative;
+      z-index:5;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.65);
+      backdrop-filter:blur(10px);
+      border-radius:28px;
+      padding:clamp(22px,4vw,42px);
+      box-shadow:0 18px 48px rgba(59,31,82,.13);
+    }
+    h2{
+      margin:0 0 16px;
+      font-family:"Mali",cursive;
+      color:#674a86;
+      font-size:clamp(1.65rem,4vw,2.35rem);
+    }
+    .lead{
+      line-height:1.9;
+      color:#695b7d;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .bubble-box{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+    .bubble{
+      background:#fff1f7;
+      border:1px solid #ffd3e3;
+      border-radius:20px;
+      padding:14px;
+      text-align:center;
+      font-size:.95rem;
+      color:#7a5c75;
+    }
+
+    .earth-talk{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      height:100%;
+      justify-content:center;
+    }
+    .speech{
+      background:#fff6fb;
+      border-radius:20px 20px 20px 8px;
+      padding:14px 16px;
+      line-height:1.7;
+      border:1px solid #ffd7e8;
+      box-shadow:0 8px 18px rgba(126,73,104,.06);
+    }
+
+    .siam-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      align-items:start;
+    }
+    .fortune-box{
+      background:linear-gradient(180deg,#fffefc 0%, #fff4fb 100%);
+      border:1px solid #ffd5e4;
+      border-radius:24px;
+      padding:20px;
+    }
+    .stick-jar{
+      min-height:250px;
+      position:relative;
+      background:linear-gradient(180deg,#fff3f9 0%, #fffdf9 100%);
+      border:1px dashed #efbdd1;
+      border-radius:24px;
+      padding:18px;
+      overflow:hidden;
+    }
+    .sticks{
+      display:flex;
+      justify-content:center;
+      align-items:flex-end;
+      gap:10px;
+      min-height:150px;
+      margin-top:18px;
+    }
+    .stick{
+      width:18px;
+      border-radius:8px 8px 2px 2px;
+      background:linear-gradient(180deg,#efbc7f 0%, #cf8b4d 100%);
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,.2);
+      transform-origin:bottom center;
+    }
+    .stick:nth-child(1){height:100px; transform:rotate(-14deg)}
+    .stick:nth-child(2){height:120px; transform:rotate(-8deg)}
+    .stick:nth-child(3){height:112px; transform:rotate(-2deg)}
+    .stick:nth-child(4){height:126px; transform:rotate(5deg)}
+    .stick:nth-child(5){height:104px; transform:rotate(12deg)}
+    .stick:nth-child(6){height:118px; transform:rotate(16deg)}
+
+    .fortune-result{
+      margin-top:18px;
+      min-height:150px;
+      background:#fff;
+      border-radius:20px;
+      border:1px solid #f3d7e4;
+      padding:18px;
+      line-height:1.8;
+      color:#654f73;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);
+    }
+    .fortune-title{
+      font-family:"Mali",cursive;
+      font-size:1.15rem;
+      color:#925c83;
+      margin-bottom:8px;
+    }
+    .action-group{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .water-scene{
+      margin-top:18px;
+      background:linear-gradient(180deg, rgba(178,223,255,.18) 0%, rgba(113,187,239,.32) 30%, rgba(57,136,197,.95) 100%);
+      border-radius:28px;
+      padding:22px;
+      border:1px solid rgba(255,255,255,.55);
+      overflow:hidden;
+    }
+    .wish-controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .wish-input{
+      flex:1 1 340px;
+      min-width:220px;
+      border:none;
+      border-radius:18px;
+      padding:14px 16px;
+      font:400 .98rem "Prompt",sans-serif;
+      outline:none;
+      color:#5b4b69;
+    }
+    .pond{
+      position:relative;
+      min-height:280px;
+      border-radius:24px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.35) 0 1px, transparent 2px),
+        linear-gradient(180deg, rgba(255,245,204,.25) 0%, rgba(172,220,255,.18) 30%, rgba(92,182,229,.55) 100%);
+      border:1px solid rgba(255,255,255,.35);
+    }
+    .water-wave{
+      position:absolute;
+      left:-10%;
+      width:120%;
+      height:85px;
+      border-radius:45%;
+      background:rgba(255,255,255,.14);
+      animation: wave 11s linear infinite;
+    }
+    .wave1{bottom:58px}
+    .wave2{bottom:22px; animation-duration:15s; opacity:.55}
+    .wave3{bottom:-10px; animation-duration:19s; opacity:.38}
+    @keyframes wave{
+      from{transform:translateX(0)}
+      to{transform:translateX(-10%)}
+    }
+    .moon-reflect{
+      position:absolute;
+      right:8%;
+      top:18px;
+      width:88px;
+      height:88px;
+      border-radius:50%;
+      background:#fff2b8;
+      box-shadow:0 0 28px rgba(255,232,143,.45);
+      opacity:.92;
+    }
+    .moon-trail{
+      position:absolute;
+      right:10.2%;
+      top:102px;
+      width:52px;
+      height:120px;
+      background:linear-gradient(180deg, rgba(255,238,166,.46), rgba(255,255,255,0));
+      filter:blur(4px);
+      border-radius:50%;
+      opacity:.7;
+    }
+    .floating-note{
+      position:absolute;
+      top:12px;
+      left:14px;
+      font-size:.92rem;
+      color:white;
+      background:rgba(89,74,127,.32);
+      padding:8px 12px;
+      border-radius:999px;
+      backdrop-filter:blur(6px);
+    }
+    .krathong{
+      position:absolute;
+      left:-170px;
+      bottom:38px;
+      width:160px;
+      text-align:center;
+      animation:none;
+    }
+    .krathong.active{
+      animation: sail 24s linear forwards; animation-delay: var(--delay, 0s);
+    }
+    @keyframes sail{
+      0%{left:-170px; bottom:38px; transform:rotate(0deg)}
+      15%{left:5%; bottom:54px; transform:rotate(-2deg)}
+      32%{left:22%; bottom:43px; transform:rotate(2deg)}
+      50%{left:42%; bottom:55px; transform:rotate(-1deg)}
+      68%{left:60%; bottom:44px; transform:rotate(2deg)}
+      86%{left:80%; bottom:57px; transform:rotate(-2deg)}
+      100%{left:104%; bottom:46px; transform:rotate(1deg)}
+    }
+    .krathong-emoji{
+      font-size:3.1rem;
+      filter:drop-shadow(0 8px 6px rgba(20,68,109,.26));
+    }
+    .wish-paper{
+      margin:0 auto 6px;
+      width:118px;
+      min-height:44px;
+      background:rgba(255,252,245,.95);
+      color:#6d4a6a;
+      font-size:.76rem;
+      line-height:1.35;
+      padding:8px 9px;
+      border-radius:12px;
+      box-shadow:0 5px 15px rgba(39,28,67,.14);
+      transform:translateY(10px);
+      word-break:break-word;
+    }
+    .launch-msg{
+      margin-top:14px;
+      min-height:30px;
+      color:#fff;
+      font-family:"Mali",cursive;
+      font-size:1.03rem;
+    }
+
+    .quote-strip{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:16px;
+    }
+    .quote{
+      background:#fff5dc;
+      color:#8a5e48;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:.9rem;
+    }
+
+    footer{
+      text-align:center;
+      color:#7a6781;
+      padding:28px 20px 44px;
+      font-size:.92rem;
+    }
+
+    @media(max-width:820px){
+      nav .links{display:none}
+      .moon{width:105px;height:105px;right:-15px;top:105px}
+      .grid-2,.siam-row{grid-template-columns:1fr}
+      .bubble-box{grid-template-columns:1fr}
+      .pond{min-height:320px}
+      .wish-input{flex-basis:100%}
+    }
+  .krathong-emoji svg{display:block;margin:auto;overflow:visible}.wish-paper{position:relative;z-index:2;transform:none;margin-bottom:0}.float-line svg{width:90px;height:auto;vertical-align:middle}
+#adminPanel input,#adminPanel textarea,#adminPanel select,#adminLogin input{display:block;width:100%;padding:12px;margin:8px 0;border:1px solid #e5bfd4;border-radius:12px;font:inherit}#adminPanel textarea{min-height:90px}#moderation article,#sharedWishes article{padding:12px;border-radius:12px;background:#fff5fa;color:#674a86;margin:8px 0;overflow-wrap:anywhere}#moderation button{margin:4px}.wish-paper{overflow-wrap:anywhere;max-height:110px;overflow:auto} [hidden]{display:none!important}</style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="twinkles"></div>
+
+  <nav>
+    <div class="logo">🌙 ลอยกระทงกับเอิร์ธ</div>
+    <div class="links">
+      <a href="#about">เกี่ยวกับเอิร์ธ</a>
+      <a href="#fortune">เสี่ยงเซียมซี</a>
+      <a href="#float">ลอยกระทง</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="moon"></div>
+    <div class="hero-inner">
+      <div class="chip">🪷 คืนนี้ถวายใจให้เอิร์ธ และถวายกระทงให้สายน้ำ 🪷</div>
+      <h1 id="eventTitle">ลอยกระทงกับ <span class="name">เอิร์ธ Cooheart</span><br>เสี่ยงเซียมซีแบบฮา ๆ 💗</h1>
+      <p class="subtitle">
+        หน้าเว็บน่ารัก ๆ สำหรับคนที่มีอาการคิดถึงเอิร์ธแบบไม่ไหวแล้ว
+        มีทั้งคำทำนายตลก ๆ ฟีล “โพเฮียเอิร์ธ” “เอิร์ธคนสวยขา”
+        และมีโหมดพิมพ์คำอธิษฐานแล้วปล่อยกระทงลอยไปลอยไปใต้แสงจันทร์ ✨
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#fortune">ไปเสี่ยงเซียมซี 🔮</a>
+        <a class="btn secondary" href="#float">ไปลอยกระทง 🪷</a>
+      </div>
+      <div class="tagline">โพเฮียเอิร์ธก็ได้ เอิร์ธคนสวยขาก็ดี คืนนี้ขอให้โดนเอ็นดูทุกคน 🌕</div>
+      <div class="float-line"><svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg> <svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg> <svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg></div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="card grid-2">
+      <div>
+        <h2>คืนนี้เกี่ยวกับเอิร์ธยังไงบ้าง 🥹</h2>
+        <p class="lead">
+          ฟีลของเว็บนี้คือ “ลอยกระทงด้วยความคิดถึง”
+          เอาไว้กดเล่นสนุก ๆ เวลานึกถึงเอิร์ธ อยากเสี่ยงดวงว่าคืนนี้
+          จะได้สถานะเป็น <b>โพเฮียเอิร์ธ</b> หรือจะเลื่อนขั้นเป็น
+          <b>เอิร์ธคนสวยขา</b> พร้อมคำทำนายแบบตลก น่ารัก และแซวใจตัวเองได้เบา ๆ
+        </p>
+        <div class="bubble-box">
+          <div class="bubble">💘 โหมดโพเฮียเอิร์ธ</div>
+          <div class="bubble">🌷 โหมดเอิร์ธคนสวยขา</div>
+          <div class="bubble">🔮 คำทำนายกาว ๆ</div>
+          <div class="bubble">🪷 ลอยกระทงพร้อมคำอธิษฐาน</div>
+        </div>
+      </div>
+      <div class="earth-talk">
+        <div class="speech">“คืนนี้ถ้าเสี่ยงเซียมซีแล้วได้ใบดี แปลว่าเอิร์ธกำลังส่งยิ้มผ่านพระจันทร์มาให้” 🌙</div>
+        <div class="speech">“ถ้าไม่ได้ใบดี… ไม่เป็นไร อย่างน้อยก็ยังได้เป็นเอิร์ธคนสวยขาในใจตัวเองก่อน” 💅</div>
+        <div class="speech">“ถ้าใจสั่น แสดงว่าไม่ใช่ลมหนาว แต่เป็นเอิร์ธค่ะ” 🫠</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fortune">
+    <div class="card">
+      <h2>เสี่ยงเซียมซีทำนายคืนนี้ 🔮</h2><p class="lead">60 ใบ 3 ทีม ทีมละ 20 ใบ · สุ่มไม่ซ้ำจนครบรอบ · คำทำนายเพื่อความสนุกเท่านั้น</p>
+      <div class="siam-row">
+        <div class="stick-jar">
+          <div class="floating-note">เขย่ากระบอกเบา ๆ ในใจ แล้วกดสุ่มเลย ✨</div>
+          <div class="sticks">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+          </div>
+          <div class="quote-strip">
+            <div class="quote">โพเฮียเอิร์ธ</div>
+            <div class="quote">เอิร์ธคนสวยขา</div>
+            <div class="quote">ทีมโพไหล ไม่มีจุดยืน</div>
+          </div>
+        </div>
+
+        <div class="fortune-box">
+          <p class="lead" style="margin-top:0">
+            เลือกพลังแห่งคืนลอยกระทงที่อยากเปิดรับก่อน แล้วรับคำทำนายแบบฮา ๆ ได้เลย
+          </p>
+          <div class="action-group">
+            <button class="btn primary" onclick="drawFortune('po')">ทีมโพเฮียเอิร์ธ 💘</button>
+            <button class="btn primary" onclick="drawFortune('pretty')">ทีมเอิร์ธคนสวยขา 🌷</button>
+            <button class="btn primary" onclick="drawFortune('mix')">ทีมโพไหล ไม่มีจุดยืน 🤣</button>
+          </div>
+
+          <div id="fortuneResult" class="fortune-result">
+            <div class="fortune-title">รอคำทำนายอยู่ตรงนี้…</div>
+            กดปุ่มสักอัน แล้วมาดูกันว่าคืนนี้จักรวาลสายเอิร์ธจะบอกอะไรคุณ 💫
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="float">
+    <div class="card">
+      <h2>ลอยกระทงพร้อมคำอธิษฐาน 🪷</h2>
+      <p class="lead">
+        พิมพ์คำอธิษฐานถึงคืนนี้ได้เลย จะเป็นเรื่องเอิร์ธ เรื่องความรัก
+        หรือเรื่องอยากมีโมเมนต์น่ารัก ๆ ก็ได้ จากนั้นกดปล่อยกระทง
+        แล้วพิมพ์คำอธิษฐานใหม่ได้ทันที กระทงแต่ละใบจะทยอยลอยตามกันไป ไม่ต้องรอใบก่อนหน้า 🌕
+      </p>
+
+      <div class="water-scene">
+        <div class="wish-controls">
+          <input id="wishName" class="wish-input" maxlength="40" placeholder="ชื่อเล่น (ไม่บังคับ)" /><input id="wishInput" class="wish-input" maxlength="200" placeholder="เช่น ขอให้เอิร์ธเอ็นดู ขอให้ใจแข็งเวลาเห็นรอยยิ้ม หรืออะไรก็ได้..." />
+          <button class="btn primary" onclick="launchKrathong()">ปล่อยกระทง ✨</button>
+        </div>
+
+        <div class="pond">
+          <div class="moon-reflect"></div>
+          <div class="moon-trail"></div>
+          <div class="floating-note">คืนนี้สายน้ำรับฝากความคิดถึงถึงเอิร์ธนะ 💌</div>
+          <div class="water-wave wave1"></div>
+          <div class="water-wave wave2"></div>
+          <div class="water-wave wave3"></div>
+
+          <template id="krathongTemplate"><div class="krathong">
+            <div class="wish-paper">คำอธิษฐานจะอยู่ตรงนี้</div>
+            <div class="krathong-emoji"><svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg></div>
+          </div></template>
+        </div>
+        <div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงให้ทุกคนเห็นหลังแอดมินอนุมัติ กรุณาไม่ใส่ข้อมูลส่วนตัว</p><div id="sharedWishes" style="display:grid;gap:8px;color:white"></div>
+      </div>
+    </div>
+  </section>
+
+  <section><div class="card"><details><summary>🔐 สำหรับแอดมิน</summary><div id="adminLogin"><p>เข้าสู่ระบบด้วยบัญชีที่สร้างไว้ใน Firebase</p><input id="adminEmail" type="email" placeholder="อีเมล"><input id="adminPassword" type="password" placeholder="รหัสผ่าน"><button id="loginBtn" class="btn primary">เข้าสู่ระบบ</button></div><p id="adminStatus" role="status"></p><div id="adminPanel" hidden><button id="logoutBtn" class="btn primary">ออกจากระบบ</button><h3>จัดการคำอธิษฐาน</h3><div id="moderation"></div><h3>แก้ไขชื่อหน้าเว็บ</h3><input id="titleEdit" maxlength="180"><button id="saveTitle" class="btn primary">บันทึกชื่อเว็บ</button><h3>แก้ไขเซียมซี</h3><select id="teamEdit"><option value="po">โพเฮียเอิร์ธ</option><option value="pretty">เอิร์ธคนสวยขา</option><option value="mix">โพไหล ไม่มีจุดยืน</option></select><select id="fortuneEdit"></select><label>ชื่อใบเซียมซี<input id="fTitle" maxlength="160"></label><label>คำทำนาย<textarea id="fText" maxlength="1000"></textarea></label><label>เสริมดวงคืนนี้<textarea id="fBonus" maxlength="1000"></textarea></label><button id="saveFortune" class="btn primary">บันทึกใบเซียมซี</button><button id="addFortune" class="btn primary">เพิ่มใบใหม่</button><button id="deleteFortune" class="btn primary">ลบใบนี้</button></div></details></div></section><footer>
+    Made with 💗 for people who are very normal about Earth Cooheart (ไม่ปกติเลยนิดนึง) 🌙
+  </footer>
+
+  <script>
+    const fortunes = {
+      po: [
+        {
+          title: "ใบที่ 01 : โพเฮียเอิร์ธขั้นเริ่มต้น",
+          text: "คืนนี้มีเกณฑ์ยิ้มคนเดียวตอนคิดถึงเอิร์ธ 3 รอบติด หากเผลอเรียกตัวเองว่า ‘โพเฮียเอิร์ธ’ ให้ถือว่าเป็นสัญญาณที่ดี จักรวาลบอกว่าคุณกำลังน่ารักแบบไม่รู้ตัว",
+          bonus: "เรียก “เฮียเอิร์ธขา” 3 ครั้งก่อนนอน ถ้าเขินเองให้นับใหม่ตั้งแต่ต้น"
+        },
+        {
+          title: "ใบที่ 02 : เฮียแต่ใจบาง",
+          text: "เหมือนจะเป็นสายโพ แต่จริง ๆ มีโอกาสใจละลายเพราะคำว่า ‘คนสวยขา’ มากกว่าที่คิด วันนี้เหมาะกับการแกล้งทำเข้ม แล้วแพ้ความน่ารักใน 2.5 วินาที",
+          bonus: "บอกรักเฮียเอิร์ธ 1 ครั้ง แล้วทำหน้าเหมือนไม่ได้คลั่งรัก (ถ้าทำได้อะนะ)"
+        },
+        {
+          title: "ใบที่ 03 : เสน่ห์แรงแบบเฮียจำเป็น",
+          text: "คืนนี้ถ้าพูดว่า ‘โพเฮียเอิร์ธ’ 1 ครั้ง ความมั่นใจจะเพิ่ม 12% แต่ความเขินจะเพิ่ม 89% แนะนำให้รับชะตาและใช้ชีวิตเป็นคนคลั่งรักต่อไป",
+          bonus: "พูด “เฮียเอิร์ธหล่อมากค่ะ” หน้ากระจก 3 รอบ เพื่อเปิดทรัพย์ แต่ระวังทรัพย์ไหลไปซื้อบัตรงาน"
+        },
+        {"title": "ใบที่ 04 : เฮียใส่แว่น", "text": "ดวงสายตาไม่ค่อยดี มองอะไรก็เห็นแต่ความหล่อของเฮีย", "bonus": "ถอดแว่นแล้วพูดว่า เฮียเอิร์ธหล่อแม้ในความละเอียด 144p"},
+        {"title": "ใบที่ 05 : เงินเดือนสะเทือน", "text": "เงินเดือนยังไม่เข้า แต่ใจจองบัตรไปแล้ว", "bonus": "กล่าว เฮียเอิร์ธขา รักเฮียแต่ขอรักบัญชีธนาคารด้วย"},
+        {"title": "ใบที่ 06 : เฮียในชุดสูท", "text": "มีเกณฑ์เห็นรูปชุดสูทแล้วลืมว่ากำลังทำอะไร", "bonus": "พูด เฮียเอิร์ธคะ รับผิดชอบความหล่อด้วยค่ะ"},
+        {"title": "ใบที่ 07 : หัวใจติดบั๊ก", "text": "สมองสั่งให้ใจเย็น แต่หัวใจประมวลผลคำว่าเฮียซ้ำ", "bonus": "ท่อง เฮียเอิร์ธหล่อ สามจบ แล้วรีสตาร์ตตัวเองด้วยการดื่มน้ำ"},
+        {"title": "ใบที่ 08 : ลมหนาวแพ้เฮีย", "text": "คืนนี้อากาศเย็น แต่แก้มคุณอาจร้อนเพราะรูปหล่อๆ", "bonus": "พูด เฮียเอิร์ธขา เบาได้เบา หนูจะสุกแล้ว"},
+        {"title": "ใบที่ 09 : นักเซฟรูปแห่งปี", "text": "พื้นที่มือถือมีเกณฑ์ลดลงโดยไม่ทราบสาเหตุ แต่โทษเฮียไว้ก่อน", "bonus": "เปิดรูปโปรดแล้วกล่าว เฮียเอิร์ธหล่อจนเมมเต็มค่ะ"},
+        {"title": "ใบที่ 10 : เฮียประจำหน้าจอ", "text": "วอลเปเปอร์มีอำนาจทำให้ลืมเวลา", "bonus": "ทักหน้าจอว่า สวัสดีค่ะเฮียเอิร์ธ แล้วไปทำงานต่อ"},
+        {"title": "ใบที่ 11 : ดวงนักสู้", "text": "ต่อให้ชีวิตมีอุปสรรค ก็ยังมีแรงซูมรูปเฮีย", "bonus": "กำหมัดแล้วพูด เฮียเอิร์ธสู้ หนูก็สู้ค่ะ"},
+        {"title": "ใบที่ 12 : เฮียกับกาแฟ", "text": "กาแฟอาจไม่ช่วยให้ตื่นเท่ารูปเฮียหนึ่งรูป", "bonus": "จิบเครื่องดื่มแล้วกล่าว เฮียเอิร์ธคือคาเฟอีนของหนู"},
+        {"title": "ใบที่ 13 : บัตรคิวหัวใจ", "text": "คิวซื้อข้าวยาวได้ แต่คิวชมความหล่อไม่มีวันหมด", "bonus": "พูด เฮียเอิร์ธหล่อคิวแรก คิวสุดท้ายก็ยังหล่อ"},
+        {"title": "ใบที่ 14 : นักแกล้งนิ่ง", "text": "ดวงภายนอกสงบ ภายในกรี๊ดไปแล้วแปดตลบ", "bonus": "ทำหน้านิ่งแล้วกระซิบ เฮียเอิร์ธขา หนูไหวค่ะ (ไม่จริง)"},
+        {"title": "ใบที่ 15 : เฮียคือมาตรฐาน", "text": "มีเกณฑ์ตั้งมาตรฐานความหล่อสูงขึ้นโดยไม่จำเป็น", "bonus": "ชูนิ้วโป้งแล้วบอก เฮียเอิร์ธเต็มสิบให้สิบเอ็ด"},
+        {"title": "ใบที่ 16 : พระจันทร์เป็นพยาน", "text": "ดวงจันทร์เต็มดวง แต่ใจคุณเต็มไปด้วยความเอ็นดูเฮีย", "bonus": "มองฟ้าแล้วพูด รักเฮียเอิร์ธเท่าพระจันทร์ค่ะ"},
+        {"title": "ใบที่ 17 : สายหล่อไม่พัก", "text": "ดูรูปหนึ่งรูปอาจกลายเป็นสิบรูปโดยไม่รู้ตัว", "bonus": "นับหนึ่งถึงสามแล้วกล่าว เฮียเอิร์ธหล่อ พอแล้วค่ะ (ปิดรูปด้วย)"},
+        {"title": "ใบที่ 18 : คำอธิษฐานฉบับเฮีย", "text": "โชคดีของคืนนี้คือได้หัวเราะกับความคลั่งรักตัวเอง", "bonus": "พนมมือ ขอให้เฮียเอิร์ธสุขภาพดี หนูมีวันลา สาธุ"},
+        {"title": "ใบที่ 19 : ผู้พิทักษ์โพเฮีย", "text": "มีเกณฑ์โดนเพื่อนถามว่าทำไมยิ้มกับมือถือ", "bonus": "ตอบว่า เฮียเอิร์ธหล่อค่ะ จบการแถลงข่าว"},
+        {"title": "ใบที่ 20 : เฮียขาประจำใจ", "text": "ไม่ต้องเสี่ยงดวงก็รู้ว่าคุณพร้อมชมเฮียทุกวัน", "bonus": "ส่งหัวใจให้รูปเฮียแล้วบอก รักเฮียเอิร์ธนะคะ"}
+      ],
+      pretty: [
+        {
+          title: "ใบที่ 21 : เอิร์ธคนสวยขาประจำวัน",
+          text: "คุณมีเกณฑ์หลุดพูดคำว่า ‘เอิร์ธคนสวยขา’ โดยไม่ตั้งใจในใจตัวเองอย่างน้อย 5 ครั้งคืนนี้ ถือเป็นใบดีแห่งความเอ็นดูและความฟินเล็ก ๆ",
+          bonus: "พูด “เอิร์ธคนสวยขา” 3 ครั้ง แล้วเติม “สวยที่สุดในซอย” อีก 1 ครั้ง"
+        },
+        {
+          title: "ใบที่ 22 : น่ารักจนจักรวาลเอ็นดู",
+          text: "คืนนี้พลังความเป็นเอิร์ธคนสวยขาในตัวคุณพุ่งสูง คุณจะเจอโมเมนต์เล็ก ๆ ที่ทำให้ใจฟู เช่น เพลงเพราะ ลมเย็น หรือการคิดถึงเอิร์ธแบบไม่มีเหตุผลแต่มีความสุข",
+          bonus: "ส่งจุ๊บให้รูปเอิร์ธหนึ่งที พร้อมกล่าว “คนสวยขา วันนี้กินข้าวหรือยังคะ”"
+        },
+        {
+          title: "ใบที่ 23 : คนสวยขาผู้มีบุญ",
+          text: "ดวงบอกว่าถ้าคุณเรียกเอิร์ธว่า ‘คนสวยขา’ ด้วยใจบริสุทธิ์ คืนนี้การนอนหลับจะดีขึ้น 30% แต่โอกาสฝันถึงเอิร์ธจะเพิ่มขึ้นแบบคูณสอง",
+          bonus: "บอกรักเอิร์ธคนสวยขาก่อนนอน 3 รอบ ห้ามสลับไปเรียกเฮียกลางคัน ไม่งั้นต้องเริ่มใหม่"
+        },
+        {"title": "ใบที่ 24 : คนสวยแห่งตำบล", "text": "ดวงความสวยของเอิร์ธทำให้คำชมในคลังศัพท์ไม่พอ", "bonus": "พูด เอิร์ธคนสวยขา สวยจนพจนานุกรมลาออกค่ะ"},
+        {"title": "ใบที่ 25 : แก้มจะระเบิด", "text": "มีเกณฑ์ยิ้มจนแก้มเมื่อยเมื่อเห็นรูปโปรด", "bonus": "นวดแก้มแล้วกล่าว คนสวยขา รับผิดชอบแก้มหนูด้วย"},
+        {"title": "ใบที่ 26 : มงลง", "text": "คืนนี้ดวงมงกุฎโดดเด่น ผู้ชนะในใจคือเอิร์ธ", "bonus": "ทำท่าสวมมงแล้วพูด เอิร์ธคนสวยขา รับมงค่ะ"},
+        {"title": "ใบที่ 27 : ดวงสีชมพู", "text": "มองโลกเป็นสีชมพูแม้จะเปิดแอปธนาคาร", "bonus": "พูด คนสวยขา สวยมาก แต่หนูขอออมเงินก่อนนะคะ"},
+        {"title": "ใบที่ 28 : ความสวยเกินระบบ", "text": "หัวใจมีเกณฑ์โหลดไม่ทันเมื่อเจอรูปใหม่", "bonus": "กล่าว เอิร์ธคนสวยขา ขอเวลาประมวลผลแป๊บค่ะ"},
+        {"title": "ใบที่ 29 : ดอกไม้แพ้แล้ว", "text": "ดอกไม้ในกระทงขอยอมแพ้ความสวยในใจคุณ", "bonus": "ส่งจุ๊บให้กระทงแล้วพูด เอิร์ธคนสวยขา ดอกไม้ฝากชมค่ะ"},
+        {"title": "ใบที่ 30 : เจ้าหญิงแห่งคืนเพ็ญ", "text": "คืนนี้เหมาะกับการชมความสวยแบบไม่ต้องมีเหตุผล", "bonus": "กล่าว คนสวยขา สวยตั้งแต่วันจันทร์ยันวันอาทิตย์"},
+        {"title": "ใบที่ 31 : นักหวีดเสียงเบา", "text": "มีเกณฑ์กรี๊ดแบบไม่มีเสียงเพราะอยู่กับคนอื่น", "bonus": "กระซิบ เอิร์ธคนสวยขา แล้วทำตัวปกติให้ได้"},
+        {"title": "ใบที่ 32 : รูปใหม่ใจใหม่", "text": "ดวงมีความสุขกับเรื่องเล็กๆ เช่น รูปที่ชอบ", "bonus": "ทำมือรูปหัวใจแล้วบอก คนสวยขา วันนี้ขอให้ยิ้มเยอะๆ"},
+        {"title": "ใบที่ 33 : นักชมมืออาชีพ", "text": "คุณอาจใช้คำว่าสวยซ้ำจนเพื่อนจำได้", "bonus": "คิดคำชมใหม่หนึ่งคำแล้วพูดให้รูปเอิร์ธฟัง"},
+        {"title": "ใบที่ 34 : คนสวยกับพระจันทร์", "text": "แสงจันทร์สวย แต่คุณมีผู้ชนะในใจอยู่แล้ว", "bonus": "บอกพระจันทร์ว่า ขอโทษนะ เอิร์ธคนสวยขาชนะค่ะ"},
+        {"title": "ใบที่ 35 : ดวงหวานไม่เติมน้ำตาล", "text": "ความน่ารักคืนนี้หวานพอแล้ว", "bonus": "กล่าว เอิร์ธคนสวยขา หวานร้อยไม่ต้องเพิ่มไซรัป"},
+        {"title": "ใบที่ 36 : กระจกขอพัก", "text": "ดวงความสวยโดดเด่นจนกระจกในจินตนาการขอลาพัก", "bonus": "พูด กระจกจ๋า ใครสวยที่สุด เอิร์ธคนสวยขาค่ะ"},
+        {"title": "ใบที่ 37 : ใจฟูฉบับพกพา", "text": "มีเกณฑ์นึกถึงเรื่องน่ารักแล้วอารมณ์ดีขึ้น", "bonus": "กอดตัวเองแล้วพูด คนสวยขา ขอให้มีความสุขทั้งคู่เลย"},
+        {"title": "ใบที่ 38 : สายจุ๊บ", "text": "พลังความเอ็นดูสูงเป็นพิเศษ แต่ไม่จำเป็นต้องซื้ออะไร", "bonus": "ส่งจุ๊บกลางอากาศแล้วกล่าว รักเอิร์ธคนสวยขาที่สุด"},
+        {"title": "ใบที่ 39 : สวยจนลืมคำ", "text": "เตรียมคำชมมาสิบประโยค สุดท้ายเหลือแค่สวยมาก", "bonus": "พูด สวยค่ะ สวยขา สวยจริงๆ สามจังหวะ"},
+        {"title": "ใบที่ 40 : คนสวยประจำจักรวาล", "text": "ดวงคืนนี้ไม่มีอะไรต้องแก้ นอกจากเข้านอนให้พอ", "bonus": "บอกฝันดีกับรูปเอิร์ธว่า คนสวยขา พักผ่อนด้วยนะคะ"}
+      ],
+      mix: [
+        {
+          title: "ใบที่ 41 : ใบกาวระดับพระจันทร์เต็มดวง",
+          text: "วันนี้คุณมีเกณฑ์จะสลับโหมดจากโพเฮียเอิร์ธไปเป็นเอิร์ธคนสวยขาภายในเวลาไม่ถึง 10 นาที ดวงชี้ชัดว่าหัวใจคุณไม่มีเสถียรภาพเมื่อเจอความน่ารัก",
+          bonus: "ท่อง “เฮียเอิร์ธหล่อ เอิร์ธคนสวยขา” สลับกัน 3 รอบ โพไหนก็ได้ ใจเรารับหมด"
+        },
+        {
+          title: "ใบที่ 42 : ใบแห่งความฟุ้งซ่านแต่น่ารัก",
+          text: "หากคืนนี้คุณเปิดเว็บนี้เกิน 2 รอบ แปลว่าความคิดถึงเอิร์ธเริ่มทำงานแล้ว และไม่มีหมอดูคนไหนช่วยได้นอกจากให้คุณยิ้มแล้วปล่อยใจไปตามสายน้ำ",
+          bonus: "ตั้งรูปเอิร์ธขึ้นมาแล้วกล่าว “รักนะคะ แต่ขอเงินในบัญชีคืนด้วยค่ะ”"
+        },
+        {
+          title: "ใบที่ 43 : จักรวาลบอกว่าให้พักก่อน…แต่พักไม่ได้",
+          text: "พยายามจะไม่คิดถึงเอิร์ธเท่าไร ก็ยิ่งคิดถึงมากเท่านั้น ถือเป็นใบเตือนให้คุณเลิกสู้กับใจ และหันมากดลอยกระทงพร้อมคำอธิษฐานแทน",
+          bonus: "พนมมือแล้วกล่าว “ขอให้เอิร์ธมีความสุข ขอให้หนูมีเงินไปหาเอิร์ธ สาธุ 99”"
+        },
+        {"title": "ใบที่ 44 : โพเปลี่ยนตามแสง", "text": "แสงเช้าเห็นเฮีย แสงเย็นเห็นคนสวย ไม่มีข้อสรุป", "bonus": "พูด เฮียเอิร์ธขา เอิร์ธคนสวยครับ แล้วขำตัวเองหนึ่งที"},
+        {"title": "ใบที่ 45 : ประชุมโพฉุกเฉิน", "text": "สมองเรียกประชุมแต่หัวใจไม่เข้าร่วม", "bonus": "ประกาศ มติเป็นเอกฉันท์ รักเอิร์ธทุกโพค่ะ"},
+        {"title": "ใบที่ 46 : โพไหลตามน้ำ", "text": "กระทงมีทิศทาง แต่โพของคุณไม่มี", "bonus": "ลอยกระทงแล้วพูด โพจะไปไหนก็ไป ใจอยู่กับเอิร์ธ"},
+        {"title": "ใบที่ 47 : สองโพหนึ่งใจ", "text": "คุณไม่ได้โลเล แค่ชื่นชมได้หลายสไตล์", "bonus": "ชูสองนิ้วแล้วกล่าว เฮียก็รัก คนสวยก็รัก"},
+        {"title": "ใบที่ 48 : กรรมการไม่ตัดสิน", "text": "ดวงมีเกณฑ์ดูรูปสองรูปแล้วเลือกไม่ถูก", "bonus": "พูด เสมอค่ะ ให้คะแนนเต็มทั้งสองโพ"},
+        {"title": "ใบที่ 49 : ใบอนุญาตโพไหล", "text": "จักรวาลสมมติอนุมัติให้เปลี่ยนโพได้ตามสะดวก", "bonus": "กล่าว ขออนุญาตไหลค่ะ ขอบคุณค่ะ"},
+        {"title": "ใบที่ 50 : หัวใจสองโหมด", "text": "สวิตช์โพทำงานเร็วกว่าสวิตช์ไฟ", "bonus": "ทำเสียงติ๊กแล้วพูด โหมดเฮีย ติ๊ก โหมดคนสวย"},
+        {"title": "ใบที่ 51 : โพตามเครื่องแต่งกาย", "text": "เปลี่ยนชุดหนึ่งครั้ง โพเปลี่ยนได้สามครั้ง", "bonus": "กล่าว เอิร์ธคะ หนูตามไม่ทันแต่หนูรักค่ะ"},
+        {"title": "ใบที่ 52 : ดวงไร้เข็มทิศ", "text": "เข็มทิศชี้เหนือ แต่ใจชี้ไปหาเอิร์ธ", "bonus": "หมุนตัวหนึ่งรอบเบาๆ แล้วบอก เจอแล้ว โพรักเอิร์ธ"},
+        {"title": "ใบที่ 53 : นักเจรจาสองฝ่าย", "text": "เพื่อนทีมเฮียกับทีมคนสวยมีสิทธิ์ชวนคุณถกเถียง", "bonus": "ตอบว่า ขอเป็นกลางค่ะ กลางใจเอิร์ธ (ในจินตนาการ)"},
+        {"title": "ใบที่ 54 : โพไหลระดับน้ำขึ้น", "text": "คืนนี้พระจันทร์ส่งผลต่อน้ำ ส่วนรูปเอิร์ธส่งผลต่อโพ", "bonus": "กล่าว เฮียหล่อ คนสวยสวย สายน้ำโปรดเป็นพยาน"},
+        {"title": "ใบที่ 55 : สายประหยัดโพ", "text": "เลือกโพไม่ได้ แต่เลือกไม่ซื้อของเพิ่มได้", "bonus": "ท่อง รักทั้งสองโพ แต่มีบัญชีเดียวค่ะ"},
+        {"title": "ใบที่ 56 : ระบบสองภาษา", "text": "ภาษาเฮียและภาษาคนสวยคล่องพอๆ กัน", "bonus": "บอกรักเฮียหนึ่งครั้ง บอกรักคนสวยหนึ่งครั้ง แล้วให้คะแนนตัวเองเต็ม"},
+        {"title": "ใบที่ 57 : ใบแห่งความยุติธรรม", "text": "หากชมเฮียหนึ่งที ต้องชมคนสวยด้วยเพื่อความสมดุล", "bonus": "กล่าว เฮียหล่อหนึ่ง คนสวยสวยหนึ่ง จบพิธี"},
+        {"title": "ใบที่ 58 : โพไหลแบบมีหลักการ", "text": "หลักการคือเอิร์ธน่ารัก จบหลักการ", "bonus": "พนมมือแล้วกล่าว ขอให้เอิร์ธมีความสุขทุกลุค สาธุ"},
+        {"title": "ใบที่ 59 : ดวงจันทร์ยังงง", "text": "พระจันทร์เปลี่ยนข้างช้ากว่าโพของคุณ", "bonus": "พูด พระจันทร์ขา ไม่ต้องตามหนูทันก็ได้"},
+        {"title": "ใบที่ 60 : ทีมรักทุกเวอร์ชัน", "text": "คำทำนายสุดท้ายคือไม่ต้องเลือกเลยก็มีความสุขได้", "bonus": "บอก รักเอิร์ธทุกโพ รักตัวเองด้วย แล้วพักผ่อนค่ะ"}
+      ]
+    };
+
+    const bags = {po:[],pretty:[],mix:[]}; const last={};
+    function drawFortune(mode){const list=fortunes[mode];const result=document.getElementById('fortuneResult');if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];result.replaceChildren();for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}}
+    let nextLaunch=0;
+    function animateWish(text){const krathong=document.getElementById('krathongTemplate').content.firstElementChild.cloneNode(true);krathong.querySelector('.wish-paper').textContent=text;const pond=document.querySelector('.pond');const now=performance.now();const delay=Math.max(0,nextLaunch-now);nextLaunch=now+delay+Math.max(1600,24000*175/(pond.clientWidth+170));krathong.style.setProperty('--delay',`${delay}ms`);krathong.classList.add('active');krathong.addEventListener('animationend',()=>krathong.remove(),{once:true});pond.appendChild(krathong);}
+    window.siteData={fortunes,bags,animateWish};
+    window.launchKrathong=()=>{document.getElementById('launchMessage').textContent='กำลังเชื่อมต่อระบบออนไลน์ กรุณาลองอีกครั้ง';};
+    document.getElementById('wishInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing)window.launchKrathong();});
+  </script>
+  <script type="module">
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+import {getAuth,onAuthStateChanged,signInAnonymously,signInWithEmailAndPassword,signOut} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+import {getFirestore,collection,doc,addDoc,setDoc,deleteDoc,updateDoc,onSnapshot,query,where,limit,serverTimestamp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+const app=initializeApp({apiKey:"AIzaSyDg1ofc2G7_8aCk1Bf_xg2uVE9-LBsv-lA",authDomain:"cooheart-loykrathong.firebaseapp.com",projectId:"cooheart-loykrathong",storageBucket:"cooheart-loykrathong.firebasestorage.app",messagingSenderId:"178150379025",appId:"1:178150379025:web:f59fceecf642cf8f5aebb0"});
+const auth=getAuth(app),db=getFirestore(app),adminUID='eMlyMmMMPraxQrRDUySmE3DUa6s1';
+const $=id=>document.getElementById(id),{fortunes,bags,animateWish}=window.siteData;
+const isAdmin=()=>auth.currentUser?.uid===adminUID;const status=t=>$('adminStatus').textContent=t;const msg=t=>$('launchMessage').textContent=t;
+const button=(label,fn)=>{const b=document.createElement('button');b.className='btn primary';b.textContent=label;b.onclick=async()=>{b.disabled=true;try{await fn()}catch(e){status('ไม่สำเร็จ: '+e.code)}finally{b.disabled=false}};return b};
+let stopAdmin=()=>{},guestPromise=null,sending=false;
+function guest(){if(auth.currentUser)return Promise.resolve(auth.currentUser);if(!guestPromise)guestPromise=signInAnonymously(auth).then(x=>x.user).finally(()=>guestPromise=null);return guestPromise;}
+onAuthStateChanged(auth,u=>{stopAdmin();const admin=u?.uid===adminUID;$('adminPanel').hidden=!admin;$('adminLogin').hidden=admin;if(admin){status('เข้าสู่ระบบแอดมินแล้ว');stopAdmin=onSnapshot(query(collection(db,'wishes'),limit(200)),snap=>{$('moderation').replaceChildren();for(const d of snap.docs){const w=d.data(),a=document.createElement('article');a.textContent=(w.approved?'✅ อนุมัติแล้ว: ':'⏳ รออนุมัติ: ')+w.name+' — '+w.wish;a.append(button(w.approved?'ซ่อน':'อนุมัติ',()=>updateDoc(d.ref,{approved:!w.approved})),button('ลบ',()=>{if(confirm('ลบคำอธิษฐานนี้?'))return deleteDoc(d.ref)}));$('moderation').append(a)}},e=>status(e.code));refreshEditor();}});
+$('loginBtn').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('adminEmail').value.trim(),$('adminPassword').value);$('adminPassword').value='';if(!isAdmin()){await signOut(auth);status('บัญชีนี้ไม่มีสิทธิ์แอดมิน')}}catch(e){status('เข้าสู่ระบบไม่ได้: '+e.code)}};
+$('logoutBtn').onclick=async()=>{await signOut(auth);status('ออกจากระบบแล้ว')};
+window.launchKrathong=async()=>{const wish=$('wishInput').value.trim(),name=$('wishName').value.trim();if(!wish){msg('เขียนคำอธิษฐานก่อนนะ');return}if(sending)return;sending=true;try{const u=await guest();await addDoc(collection(db,'wishes'),{name:name||'แฟนคลับ',wish,uid:u.uid,approved:false,createdAt:serverTimestamp()});animateWish(wish);$('wishInput').value='';msg('ส่งกระทงแล้ว ♡ รอแอดมินอนุมัติก่อนแสดงให้ทุกคนเห็น')}catch(e){msg('ส่งไม่สำเร็จ กรุณาลองอีกครั้ง: '+e.code)}finally{sending=false}};
+let seen=new Set();onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(50)),snap=>{const list=$('sharedWishes');list.replaceChildren();for(const d of snap.docs){const w=d.data();const a=document.createElement('article');a.textContent='🪷 '+w.name+' : '+w.wish;list.append(a);if(!seen.has(d.id)){animateWish(w.wish);seen.add(d.id)}}},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
+const original=JSON.parse(JSON.stringify(fortunes));let overrides={};function rebuild(){for(const team of Object.keys(original)){const map=new Map(original[team].map((f,i)=>[team+'-'+i,{...f,id:team+'-'+i}]));for(const [id,f] of Object.entries(overrides)){if(f.team!==team)continue;if(f.deleted)map.delete(id);else map.set(id,{...f,id})}fortunes[team]=[...map.values()];bags[team]=[]}refreshEditor()}
+onSnapshot(collection(db,'fortunes'),snap=>{overrides={};for(const d of snap.docs)overrides[d.id]=d.data();rebuild()},e=>status('โหลดเซียมซีไม่ได้: '+e.code));
+function refreshEditor(){const team=$('teamEdit').value,sel=$('fortuneEdit'),prev=sel.value;sel.replaceChildren();for(const f of fortunes[team]){const o=document.createElement('option');o.value=f.id||team+'-'+fortunes[team].indexOf(f);o.textContent=f.title;sel.append(o)}if([...sel.options].some(o=>o.value===prev))sel.value=prev;fillEditor()}
+function fillEditor(){const f=fortunes[$('teamEdit').value][$('fortuneEdit').selectedIndex];$('fTitle').value=f?.title||'';$('fText').value=f?.text||'';$('fBonus').value=f?.bonus||'';}
+$('teamEdit').onchange=refreshEditor;$('fortuneEdit').onchange=fillEditor;
+async function saveFortune(add){if(!isAdmin())return;const team=$('teamEdit').value,title=$('fTitle').value.trim(),text=$('fText').value.trim(),bonus=$('fBonus').value.trim();if(!title||!text||!bonus){status('กรอกข้อมูลเซียมซีให้ครบ');return}const id=add?doc(collection(db,'fortunes')).id:$('fortuneEdit').value;if(!id)return;try{await setDoc(doc(db,'fortunes',id),{team,title,text,bonus,deleted:false});status('บันทึกเซียมซีแล้ว')}catch(e){status(e.code)}}
+$('saveFortune').onclick=()=>saveFortune(false);$('addFortune').onclick=()=>saveFortune(true);$('deleteFortune').onclick=async()=>{if(!isAdmin()||!$('fortuneEdit').value||!confirm('ลบใบนี้?'))return;try{await setDoc(doc(db,'fortunes',$('fortuneEdit').value),{team:$('teamEdit').value,deleted:true});status('ลบแล้ว')}catch(e){status(e.code)}};
+const titleEl=$('eventTitle');if(titleEl){$('titleEdit').value=titleEl.textContent;onSnapshot(doc(db,'settings','site'),d=>{if(d.exists()&&typeof d.data().title==='string'){titleEl.textContent=d.data().title;$('titleEdit').value=d.data().title}},e=>status(e.code));}
+$('saveTitle').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','site'),{title:$('titleEdit').value.trim()});status('บันทึกชื่อเว็บแล้ว')}catch(e){status(e.code)}};
+</script></body></html>
