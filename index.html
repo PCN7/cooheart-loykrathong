@@ -621,7 +621,7 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
 import {getAuth,onAuthStateChanged,signInAnonymously,signInWithEmailAndPassword,signOut} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import {getFirestore,collection,doc,addDoc,setDoc,deleteDoc,updateDoc,onSnapshot,query,where,limit,serverTimestamp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
-const app=initializeApp({apiKey:"AIzaSyDg1ofc2G7_8aCk1Bf_xg2uVE9-LBsv-lA",authDomain:"cooheart-loykrathong.firebaseapp.com",projectId:"cooheart-loykrathong",storageBucket:"cooheart-loykrathong.firebasestorage.app",messagingSenderId:"178150379025",appId:"1:178150379025:web:f59fceecf642cf8f5aebb0"});
+const app=initializeApp({apiKey:"AIzaSyDg1ofc2G7_8aCklBf_xg2uVE9-LBsv-lA",authDomain:"cooheart-loykrathong.firebaseapp.com",projectId:"cooheart-loykrathong",storageBucket:"cooheart-loykrathong.firebasestorage.app",messagingSenderId:"178150379025",appId:"1:178150379025:web:f59fceecf642cf8f5aebb0"});
 const auth=getAuth(app),db=getFirestore(app),adminUID='eMlyMmMMPraxQrRDUySmE3DUa6s1';
 const $=id=>document.getElementById(id),{fortunes,bags,animateWish}=window.siteData;
 const isAdmin=()=>auth.currentUser?.uid===adminUID;const status=t=>$('adminStatus').textContent=t;const msg=t=>$('launchMessage').textContent=t;
