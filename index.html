@@ -499,7 +499,7 @@
         มีทั้งคำทำนายตลก ๆ ฟีล “โพเฮียเอิร์ธ” “เอิร์ธคนสวยขา”
         และมีโหมดพิมพ์คำอธิษฐานแล้วปล่อยกระทงลอยไปลอยไปใต้แสงจันทร์ ✨
       </p>
-      <div class="buttons">
+      <img id="heroPhoto" hidden alt="ภาพเอิร์ธ Cooheart" style="width:min(300px,80%);max-height:400px;object-fit:contain;border-radius:24px;margin:0 auto 22px;display:block"><div class="buttons">
         <a class="btn primary" href="#fortune">ไปเสี่ยงเซียมซี 🔮</a>
         <a class="btn secondary" href="#float">ไปลอยกระทง 🪷</a>
       </div>
@@ -519,8 +519,8 @@
           <b>เอิร์ธคนสวยขา</b> พร้อมคำทำนายแบบตลก น่ารัก และแซวใจตัวเองได้เบา ๆ
         </p>
         <div class="bubble-box">
-          <div class="bubble">💘 โหมดโพเฮียเอิร์ธ</div>
-          <div class="bubble">🌷 โหมดเอิร์ธคนสวยขา</div>
+          <div class="bubble">💘 โพหมาเด็ก</div>
+          <div class="bubble">🌷 โพพี่สาวคนสวย</div>
           <div class="bubble">🔮 คำทำนายกาว ๆ</div>
           <div class="bubble">🪷 ลอยกระทงพร้อมคำอธิษฐาน</div>
         </div>
@@ -535,7 +535,7 @@
 
   <section id="fortune">
     <div class="card">
-      <h2>เสี่ยงเซียมซีทำนายคืนนี้ 🔮</h2><p class="lead">60 ใบ 3 ทีม ทีมละ 20 ใบ · สุ่มไม่ซ้ำจนครบรอบ · คำทำนายเพื่อความสนุกเท่านั้น</p>
+      <h2>เสี่ยงเซียมซีทำนายคืนนี้ 🔮</h2><p class="lead">20 ใบ คละทุกโพ · สุ่มไม่ซ้ำจนครบรอบ · คำทำนายเพื่อความสนุกเท่านั้น</p>
       <div class="siam-row">
         <div class="stick-jar">
           <div class="floating-note">เขย่ากระบอกเบา ๆ ในใจ แล้วกดสุ่มเลย ✨</div>
@@ -550,23 +550,19 @@
           <div class="quote-strip">
             <div class="quote">โพเฮียเอิร์ธ</div>
             <div class="quote">เอิร์ธคนสวยขา</div>
-            <div class="quote">ทีมโพไหล ไม่มีจุดยืน</div>
+            <div class="quote">โพแฟนหนุ่ม / โพไหล</div>
           </div>
         </div>
 
         <div class="fortune-box">
           <p class="lead" style="margin-top:0">
-            เลือกพลังแห่งคืนลอยกระทงที่อยากเปิดรับก่อน แล้วรับคำทำนายแบบฮา ๆ ได้เลย
+            ไม่ต้องเลือกโพ ให้เซียมซีเลือกให้เอง!
           </p>
-          <div class="action-group">
-            <button class="btn primary" onclick="drawFortune('po')">ทีมโพเฮียเอิร์ธ 💘</button>
-            <button class="btn primary" onclick="drawFortune('pretty')">ทีมเอิร์ธคนสวยขา 🌷</button>
-            <button class="btn primary" onclick="drawFortune('mix')">ทีมโพไหล ไม่มีจุดยืน 🤣</button>
-          </div>
+          <div class="action-group"><button class="btn primary" onclick="drawFortune('all')">เขย่าเซียมซี 🎋</button></div>
 
           <div id="fortuneResult" class="fortune-result">
             <div class="fortune-title">รอคำทำนายอยู่ตรงนี้…</div>
-            กดปุ่มสักอัน แล้วมาดูกันว่าคืนนี้จักรวาลสายเอิร์ธจะบอกอะไรคุณ 💫
+            กดเขย่าเซียมซี แล้วมาดูกันว่าคืนนี้จักรวาลสายเอิร์ธจะบอกอะไรคุณ 💫
           </div>
         </div>
       </div>
@@ -601,123 +597,20 @@
             <div class="krathong-emoji"><svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg></div>
           </div></template>
         </div>
-        <div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงให้ทุกคนเห็นหลังแอดมินอนุมัติ กรุณาไม่ใส่ข้อมูลส่วนตัว</p><div id="sharedWishes" style="display:grid;gap:8px;color:white"></div>
+        <div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงสาธารณะทันที กรุณาไม่ใส่ข้อมูลส่วนตัว</p><div id="sharedWishes" style="display:grid;gap:8px;color:white"></div>
       </div>
     </div>
   </section>
 
-  <section><div class="card"><details><summary>🔐 สำหรับแอดมิน</summary><div id="adminLogin"><p>เข้าสู่ระบบด้วยบัญชีที่สร้างไว้ใน Firebase</p><input id="adminEmail" type="email" placeholder="อีเมล"><input id="adminPassword" type="password" placeholder="รหัสผ่าน"><button id="loginBtn" class="btn primary">เข้าสู่ระบบ</button></div><p id="adminStatus" role="status"></p><div id="adminPanel" hidden><button id="logoutBtn" class="btn primary">ออกจากระบบ</button><h3>จัดการคำอธิษฐาน</h3><div id="moderation"></div><h3>แก้ไขชื่อหน้าเว็บ</h3><input id="titleEdit" maxlength="180"><button id="saveTitle" class="btn primary">บันทึกชื่อเว็บ</button><h3>แก้ไขเซียมซี</h3><select id="teamEdit"><option value="po">โพเฮียเอิร์ธ</option><option value="pretty">เอิร์ธคนสวยขา</option><option value="mix">โพไหล ไม่มีจุดยืน</option></select><select id="fortuneEdit"></select><label>ชื่อใบเซียมซี<input id="fTitle" maxlength="160"></label><label>คำทำนาย<textarea id="fText" maxlength="1000"></textarea></label><label>เสริมดวงคืนนี้<textarea id="fBonus" maxlength="1000"></textarea></label><button id="saveFortune" class="btn primary">บันทึกใบเซียมซี</button><button id="addFortune" class="btn primary">เพิ่มใบใหม่</button><button id="deleteFortune" class="btn primary">ลบใบนี้</button></div></details></div></section><footer>
+  <section><div class="card"><details><summary>🔐 สำหรับแอดมิน</summary><div id="adminLogin"><p>เข้าสู่ระบบด้วยบัญชีที่สร้างไว้ใน Firebase</p><input id="adminEmail" type="email" placeholder="อีเมล"><input id="adminPassword" type="password" placeholder="รหัสผ่าน"><button id="loginBtn" class="btn primary">เข้าสู่ระบบ</button></div><p id="adminStatus" role="status"></p><div id="adminPanel" hidden><button id="logoutBtn" class="btn primary">ออกจากระบบ</button><h3>จัดการคำอธิษฐาน</h3><div id="moderation"></div><h3>แก้ไขชื่อหน้าเว็บ</h3><input id="titleEdit" maxlength="180"><button id="saveTitle" class="btn primary">บันทึกชื่อเว็บ</button><h3>รูปหลักหน้าเว็บ</h3><input id="heroFile" type="file" accept="image/jpeg,image/png,image/webp"><button id="saveHero" class="btn primary">บันทึกรูปหลัก</button><button id="removeHero" class="btn primary">ลบรูปหลัก</button><h3>แก้ไขเซียมซี</h3><select id="teamEdit" hidden><option value="all">ทุกโพ</option></select><select id="fortuneEdit"></select><label>ชื่อใบเซียมซี<input id="fTitle" maxlength="160"></label><label>คำทำนาย<textarea id="fText" maxlength="1000"></textarea></label><label>เสริมดวงคืนนี้<textarea id="fBonus" maxlength="1000"></textarea></label><button id="saveFortune" class="btn primary">บันทึกใบเซียมซี</button><label>รูปประจำใบเซียมซี<input id="fImage" type="file" accept="image/jpeg,image/png,image/webp"></label><img id="fPreview" hidden style="max-width:100%;max-height:240px;border-radius:12px" alt="ตัวอย่างรูป"><button id="clearImage" class="btn primary">เอารูปออก</button></div></details></div></section><footer>
     Made with 💗 for people who are very normal about Earth Cooheart (ไม่ปกติเลยนิดนึง) 🌙
   </footer>
 
   <script>
-    const fortunes = {
-      po: [
-        {
-          title: "ใบที่ 01 : โพเฮียเอิร์ธขั้นเริ่มต้น",
-          text: "คืนนี้มีเกณฑ์ยิ้มคนเดียวตอนคิดถึงเอิร์ธ 3 รอบติด หากเผลอเรียกตัวเองว่า ‘โพเฮียเอิร์ธ’ ให้ถือว่าเป็นสัญญาณที่ดี จักรวาลบอกว่าคุณกำลังน่ารักแบบไม่รู้ตัว",
-          bonus: "เรียก “เฮียเอิร์ธขา” 3 ครั้งก่อนนอน ถ้าเขินเองให้นับใหม่ตั้งแต่ต้น"
-        },
-        {
-          title: "ใบที่ 02 : เฮียแต่ใจบาง",
-          text: "เหมือนจะเป็นสายโพ แต่จริง ๆ มีโอกาสใจละลายเพราะคำว่า ‘คนสวยขา’ มากกว่าที่คิด วันนี้เหมาะกับการแกล้งทำเข้ม แล้วแพ้ความน่ารักใน 2.5 วินาที",
-          bonus: "บอกรักเฮียเอิร์ธ 1 ครั้ง แล้วทำหน้าเหมือนไม่ได้คลั่งรัก (ถ้าทำได้อะนะ)"
-        },
-        {
-          title: "ใบที่ 03 : เสน่ห์แรงแบบเฮียจำเป็น",
-          text: "คืนนี้ถ้าพูดว่า ‘โพเฮียเอิร์ธ’ 1 ครั้ง ความมั่นใจจะเพิ่ม 12% แต่ความเขินจะเพิ่ม 89% แนะนำให้รับชะตาและใช้ชีวิตเป็นคนคลั่งรักต่อไป",
-          bonus: "พูด “เฮียเอิร์ธหล่อมากค่ะ” หน้ากระจก 3 รอบ เพื่อเปิดทรัพย์ แต่ระวังทรัพย์ไหลไปซื้อบัตรงาน"
-        },
-        {"title": "ใบที่ 04 : เฮียใส่แว่น", "text": "ดวงสายตาไม่ค่อยดี มองอะไรก็เห็นแต่ความหล่อของเฮีย", "bonus": "ถอดแว่นแล้วพูดว่า เฮียเอิร์ธหล่อแม้ในความละเอียด 144p"},
-        {"title": "ใบที่ 05 : เงินเดือนสะเทือน", "text": "เงินเดือนยังไม่เข้า แต่ใจจองบัตรไปแล้ว", "bonus": "กล่าว เฮียเอิร์ธขา รักเฮียแต่ขอรักบัญชีธนาคารด้วย"},
-        {"title": "ใบที่ 06 : เฮียในชุดสูท", "text": "มีเกณฑ์เห็นรูปชุดสูทแล้วลืมว่ากำลังทำอะไร", "bonus": "พูด เฮียเอิร์ธคะ รับผิดชอบความหล่อด้วยค่ะ"},
-        {"title": "ใบที่ 07 : หัวใจติดบั๊ก", "text": "สมองสั่งให้ใจเย็น แต่หัวใจประมวลผลคำว่าเฮียซ้ำ", "bonus": "ท่อง เฮียเอิร์ธหล่อ สามจบ แล้วรีสตาร์ตตัวเองด้วยการดื่มน้ำ"},
-        {"title": "ใบที่ 08 : ลมหนาวแพ้เฮีย", "text": "คืนนี้อากาศเย็น แต่แก้มคุณอาจร้อนเพราะรูปหล่อๆ", "bonus": "พูด เฮียเอิร์ธขา เบาได้เบา หนูจะสุกแล้ว"},
-        {"title": "ใบที่ 09 : นักเซฟรูปแห่งปี", "text": "พื้นที่มือถือมีเกณฑ์ลดลงโดยไม่ทราบสาเหตุ แต่โทษเฮียไว้ก่อน", "bonus": "เปิดรูปโปรดแล้วกล่าว เฮียเอิร์ธหล่อจนเมมเต็มค่ะ"},
-        {"title": "ใบที่ 10 : เฮียประจำหน้าจอ", "text": "วอลเปเปอร์มีอำนาจทำให้ลืมเวลา", "bonus": "ทักหน้าจอว่า สวัสดีค่ะเฮียเอิร์ธ แล้วไปทำงานต่อ"},
-        {"title": "ใบที่ 11 : ดวงนักสู้", "text": "ต่อให้ชีวิตมีอุปสรรค ก็ยังมีแรงซูมรูปเฮีย", "bonus": "กำหมัดแล้วพูด เฮียเอิร์ธสู้ หนูก็สู้ค่ะ"},
-        {"title": "ใบที่ 12 : เฮียกับกาแฟ", "text": "กาแฟอาจไม่ช่วยให้ตื่นเท่ารูปเฮียหนึ่งรูป", "bonus": "จิบเครื่องดื่มแล้วกล่าว เฮียเอิร์ธคือคาเฟอีนของหนู"},
-        {"title": "ใบที่ 13 : บัตรคิวหัวใจ", "text": "คิวซื้อข้าวยาวได้ แต่คิวชมความหล่อไม่มีวันหมด", "bonus": "พูด เฮียเอิร์ธหล่อคิวแรก คิวสุดท้ายก็ยังหล่อ"},
-        {"title": "ใบที่ 14 : นักแกล้งนิ่ง", "text": "ดวงภายนอกสงบ ภายในกรี๊ดไปแล้วแปดตลบ", "bonus": "ทำหน้านิ่งแล้วกระซิบ เฮียเอิร์ธขา หนูไหวค่ะ (ไม่จริง)"},
-        {"title": "ใบที่ 15 : เฮียคือมาตรฐาน", "text": "มีเกณฑ์ตั้งมาตรฐานความหล่อสูงขึ้นโดยไม่จำเป็น", "bonus": "ชูนิ้วโป้งแล้วบอก เฮียเอิร์ธเต็มสิบให้สิบเอ็ด"},
-        {"title": "ใบที่ 16 : พระจันทร์เป็นพยาน", "text": "ดวงจันทร์เต็มดวง แต่ใจคุณเต็มไปด้วยความเอ็นดูเฮีย", "bonus": "มองฟ้าแล้วพูด รักเฮียเอิร์ธเท่าพระจันทร์ค่ะ"},
-        {"title": "ใบที่ 17 : สายหล่อไม่พัก", "text": "ดูรูปหนึ่งรูปอาจกลายเป็นสิบรูปโดยไม่รู้ตัว", "bonus": "นับหนึ่งถึงสามแล้วกล่าว เฮียเอิร์ธหล่อ พอแล้วค่ะ (ปิดรูปด้วย)"},
-        {"title": "ใบที่ 18 : คำอธิษฐานฉบับเฮีย", "text": "โชคดีของคืนนี้คือได้หัวเราะกับความคลั่งรักตัวเอง", "bonus": "พนมมือ ขอให้เฮียเอิร์ธสุขภาพดี หนูมีวันลา สาธุ"},
-        {"title": "ใบที่ 19 : ผู้พิทักษ์โพเฮีย", "text": "มีเกณฑ์โดนเพื่อนถามว่าทำไมยิ้มกับมือถือ", "bonus": "ตอบว่า เฮียเอิร์ธหล่อค่ะ จบการแถลงข่าว"},
-        {"title": "ใบที่ 20 : เฮียขาประจำใจ", "text": "ไม่ต้องเสี่ยงดวงก็รู้ว่าคุณพร้อมชมเฮียทุกวัน", "bonus": "ส่งหัวใจให้รูปเฮียแล้วบอก รักเฮียเอิร์ธนะคะ"}
-      ],
-      pretty: [
-        {
-          title: "ใบที่ 21 : เอิร์ธคนสวยขาประจำวัน",
-          text: "คุณมีเกณฑ์หลุดพูดคำว่า ‘เอิร์ธคนสวยขา’ โดยไม่ตั้งใจในใจตัวเองอย่างน้อย 5 ครั้งคืนนี้ ถือเป็นใบดีแห่งความเอ็นดูและความฟินเล็ก ๆ",
-          bonus: "พูด “เอิร์ธคนสวยขา” 3 ครั้ง แล้วเติม “สวยที่สุดในซอย” อีก 1 ครั้ง"
-        },
-        {
-          title: "ใบที่ 22 : น่ารักจนจักรวาลเอ็นดู",
-          text: "คืนนี้พลังความเป็นเอิร์ธคนสวยขาในตัวคุณพุ่งสูง คุณจะเจอโมเมนต์เล็ก ๆ ที่ทำให้ใจฟู เช่น เพลงเพราะ ลมเย็น หรือการคิดถึงเอิร์ธแบบไม่มีเหตุผลแต่มีความสุข",
-          bonus: "ส่งจุ๊บให้รูปเอิร์ธหนึ่งที พร้อมกล่าว “คนสวยขา วันนี้กินข้าวหรือยังคะ”"
-        },
-        {
-          title: "ใบที่ 23 : คนสวยขาผู้มีบุญ",
-          text: "ดวงบอกว่าถ้าคุณเรียกเอิร์ธว่า ‘คนสวยขา’ ด้วยใจบริสุทธิ์ คืนนี้การนอนหลับจะดีขึ้น 30% แต่โอกาสฝันถึงเอิร์ธจะเพิ่มขึ้นแบบคูณสอง",
-          bonus: "บอกรักเอิร์ธคนสวยขาก่อนนอน 3 รอบ ห้ามสลับไปเรียกเฮียกลางคัน ไม่งั้นต้องเริ่มใหม่"
-        },
-        {"title": "ใบที่ 24 : คนสวยแห่งตำบล", "text": "ดวงความสวยของเอิร์ธทำให้คำชมในคลังศัพท์ไม่พอ", "bonus": "พูด เอิร์ธคนสวยขา สวยจนพจนานุกรมลาออกค่ะ"},
-        {"title": "ใบที่ 25 : แก้มจะระเบิด", "text": "มีเกณฑ์ยิ้มจนแก้มเมื่อยเมื่อเห็นรูปโปรด", "bonus": "นวดแก้มแล้วกล่าว คนสวยขา รับผิดชอบแก้มหนูด้วย"},
-        {"title": "ใบที่ 26 : มงลง", "text": "คืนนี้ดวงมงกุฎโดดเด่น ผู้ชนะในใจคือเอิร์ธ", "bonus": "ทำท่าสวมมงแล้วพูด เอิร์ธคนสวยขา รับมงค่ะ"},
-        {"title": "ใบที่ 27 : ดวงสีชมพู", "text": "มองโลกเป็นสีชมพูแม้จะเปิดแอปธนาคาร", "bonus": "พูด คนสวยขา สวยมาก แต่หนูขอออมเงินก่อนนะคะ"},
-        {"title": "ใบที่ 28 : ความสวยเกินระบบ", "text": "หัวใจมีเกณฑ์โหลดไม่ทันเมื่อเจอรูปใหม่", "bonus": "กล่าว เอิร์ธคนสวยขา ขอเวลาประมวลผลแป๊บค่ะ"},
-        {"title": "ใบที่ 29 : ดอกไม้แพ้แล้ว", "text": "ดอกไม้ในกระทงขอยอมแพ้ความสวยในใจคุณ", "bonus": "ส่งจุ๊บให้กระทงแล้วพูด เอิร์ธคนสวยขา ดอกไม้ฝากชมค่ะ"},
-        {"title": "ใบที่ 30 : เจ้าหญิงแห่งคืนเพ็ญ", "text": "คืนนี้เหมาะกับการชมความสวยแบบไม่ต้องมีเหตุผล", "bonus": "กล่าว คนสวยขา สวยตั้งแต่วันจันทร์ยันวันอาทิตย์"},
-        {"title": "ใบที่ 31 : นักหวีดเสียงเบา", "text": "มีเกณฑ์กรี๊ดแบบไม่มีเสียงเพราะอยู่กับคนอื่น", "bonus": "กระซิบ เอิร์ธคนสวยขา แล้วทำตัวปกติให้ได้"},
-        {"title": "ใบที่ 32 : รูปใหม่ใจใหม่", "text": "ดวงมีความสุขกับเรื่องเล็กๆ เช่น รูปที่ชอบ", "bonus": "ทำมือรูปหัวใจแล้วบอก คนสวยขา วันนี้ขอให้ยิ้มเยอะๆ"},
-        {"title": "ใบที่ 33 : นักชมมืออาชีพ", "text": "คุณอาจใช้คำว่าสวยซ้ำจนเพื่อนจำได้", "bonus": "คิดคำชมใหม่หนึ่งคำแล้วพูดให้รูปเอิร์ธฟัง"},
-        {"title": "ใบที่ 34 : คนสวยกับพระจันทร์", "text": "แสงจันทร์สวย แต่คุณมีผู้ชนะในใจอยู่แล้ว", "bonus": "บอกพระจันทร์ว่า ขอโทษนะ เอิร์ธคนสวยขาชนะค่ะ"},
-        {"title": "ใบที่ 35 : ดวงหวานไม่เติมน้ำตาล", "text": "ความน่ารักคืนนี้หวานพอแล้ว", "bonus": "กล่าว เอิร์ธคนสวยขา หวานร้อยไม่ต้องเพิ่มไซรัป"},
-        {"title": "ใบที่ 36 : กระจกขอพัก", "text": "ดวงความสวยโดดเด่นจนกระจกในจินตนาการขอลาพัก", "bonus": "พูด กระจกจ๋า ใครสวยที่สุด เอิร์ธคนสวยขาค่ะ"},
-        {"title": "ใบที่ 37 : ใจฟูฉบับพกพา", "text": "มีเกณฑ์นึกถึงเรื่องน่ารักแล้วอารมณ์ดีขึ้น", "bonus": "กอดตัวเองแล้วพูด คนสวยขา ขอให้มีความสุขทั้งคู่เลย"},
-        {"title": "ใบที่ 38 : สายจุ๊บ", "text": "พลังความเอ็นดูสูงเป็นพิเศษ แต่ไม่จำเป็นต้องซื้ออะไร", "bonus": "ส่งจุ๊บกลางอากาศแล้วกล่าว รักเอิร์ธคนสวยขาที่สุด"},
-        {"title": "ใบที่ 39 : สวยจนลืมคำ", "text": "เตรียมคำชมมาสิบประโยค สุดท้ายเหลือแค่สวยมาก", "bonus": "พูด สวยค่ะ สวยขา สวยจริงๆ สามจังหวะ"},
-        {"title": "ใบที่ 40 : คนสวยประจำจักรวาล", "text": "ดวงคืนนี้ไม่มีอะไรต้องแก้ นอกจากเข้านอนให้พอ", "bonus": "บอกฝันดีกับรูปเอิร์ธว่า คนสวยขา พักผ่อนด้วยนะคะ"}
-      ],
-      mix: [
-        {
-          title: "ใบที่ 41 : ใบกาวระดับพระจันทร์เต็มดวง",
-          text: "วันนี้คุณมีเกณฑ์จะสลับโหมดจากโพเฮียเอิร์ธไปเป็นเอิร์ธคนสวยขาภายในเวลาไม่ถึง 10 นาที ดวงชี้ชัดว่าหัวใจคุณไม่มีเสถียรภาพเมื่อเจอความน่ารัก",
-          bonus: "ท่อง “เฮียเอิร์ธหล่อ เอิร์ธคนสวยขา” สลับกัน 3 รอบ โพไหนก็ได้ ใจเรารับหมด"
-        },
-        {
-          title: "ใบที่ 42 : ใบแห่งความฟุ้งซ่านแต่น่ารัก",
-          text: "หากคืนนี้คุณเปิดเว็บนี้เกิน 2 รอบ แปลว่าความคิดถึงเอิร์ธเริ่มทำงานแล้ว และไม่มีหมอดูคนไหนช่วยได้นอกจากให้คุณยิ้มแล้วปล่อยใจไปตามสายน้ำ",
-          bonus: "ตั้งรูปเอิร์ธขึ้นมาแล้วกล่าว “รักนะคะ แต่ขอเงินในบัญชีคืนด้วยค่ะ”"
-        },
-        {
-          title: "ใบที่ 43 : จักรวาลบอกว่าให้พักก่อน…แต่พักไม่ได้",
-          text: "พยายามจะไม่คิดถึงเอิร์ธเท่าไร ก็ยิ่งคิดถึงมากเท่านั้น ถือเป็นใบเตือนให้คุณเลิกสู้กับใจ และหันมากดลอยกระทงพร้อมคำอธิษฐานแทน",
-          bonus: "พนมมือแล้วกล่าว “ขอให้เอิร์ธมีความสุข ขอให้หนูมีเงินไปหาเอิร์ธ สาธุ 99”"
-        },
-        {"title": "ใบที่ 44 : โพเปลี่ยนตามแสง", "text": "แสงเช้าเห็นเฮีย แสงเย็นเห็นคนสวย ไม่มีข้อสรุป", "bonus": "พูด เฮียเอิร์ธขา เอิร์ธคนสวยครับ แล้วขำตัวเองหนึ่งที"},
-        {"title": "ใบที่ 45 : ประชุมโพฉุกเฉิน", "text": "สมองเรียกประชุมแต่หัวใจไม่เข้าร่วม", "bonus": "ประกาศ มติเป็นเอกฉันท์ รักเอิร์ธทุกโพค่ะ"},
-        {"title": "ใบที่ 46 : โพไหลตามน้ำ", "text": "กระทงมีทิศทาง แต่โพของคุณไม่มี", "bonus": "ลอยกระทงแล้วพูด โพจะไปไหนก็ไป ใจอยู่กับเอิร์ธ"},
-        {"title": "ใบที่ 47 : สองโพหนึ่งใจ", "text": "คุณไม่ได้โลเล แค่ชื่นชมได้หลายสไตล์", "bonus": "ชูสองนิ้วแล้วกล่าว เฮียก็รัก คนสวยก็รัก"},
-        {"title": "ใบที่ 48 : กรรมการไม่ตัดสิน", "text": "ดวงมีเกณฑ์ดูรูปสองรูปแล้วเลือกไม่ถูก", "bonus": "พูด เสมอค่ะ ให้คะแนนเต็มทั้งสองโพ"},
-        {"title": "ใบที่ 49 : ใบอนุญาตโพไหล", "text": "จักรวาลสมมติอนุมัติให้เปลี่ยนโพได้ตามสะดวก", "bonus": "กล่าว ขออนุญาตไหลค่ะ ขอบคุณค่ะ"},
-        {"title": "ใบที่ 50 : หัวใจสองโหมด", "text": "สวิตช์โพทำงานเร็วกว่าสวิตช์ไฟ", "bonus": "ทำเสียงติ๊กแล้วพูด โหมดเฮีย ติ๊ก โหมดคนสวย"},
-        {"title": "ใบที่ 51 : โพตามเครื่องแต่งกาย", "text": "เปลี่ยนชุดหนึ่งครั้ง โพเปลี่ยนได้สามครั้ง", "bonus": "กล่าว เอิร์ธคะ หนูตามไม่ทันแต่หนูรักค่ะ"},
-        {"title": "ใบที่ 52 : ดวงไร้เข็มทิศ", "text": "เข็มทิศชี้เหนือ แต่ใจชี้ไปหาเอิร์ธ", "bonus": "หมุนตัวหนึ่งรอบเบาๆ แล้วบอก เจอแล้ว โพรักเอิร์ธ"},
-        {"title": "ใบที่ 53 : นักเจรจาสองฝ่าย", "text": "เพื่อนทีมเฮียกับทีมคนสวยมีสิทธิ์ชวนคุณถกเถียง", "bonus": "ตอบว่า ขอเป็นกลางค่ะ กลางใจเอิร์ธ (ในจินตนาการ)"},
-        {"title": "ใบที่ 54 : โพไหลระดับน้ำขึ้น", "text": "คืนนี้พระจันทร์ส่งผลต่อน้ำ ส่วนรูปเอิร์ธส่งผลต่อโพ", "bonus": "กล่าว เฮียหล่อ คนสวยสวย สายน้ำโปรดเป็นพยาน"},
-        {"title": "ใบที่ 55 : สายประหยัดโพ", "text": "เลือกโพไม่ได้ แต่เลือกไม่ซื้อของเพิ่มได้", "bonus": "ท่อง รักทั้งสองโพ แต่มีบัญชีเดียวค่ะ"},
-        {"title": "ใบที่ 56 : ระบบสองภาษา", "text": "ภาษาเฮียและภาษาคนสวยคล่องพอๆ กัน", "bonus": "บอกรักเฮียหนึ่งครั้ง บอกรักคนสวยหนึ่งครั้ง แล้วให้คะแนนตัวเองเต็ม"},
-        {"title": "ใบที่ 57 : ใบแห่งความยุติธรรม", "text": "หากชมเฮียหนึ่งที ต้องชมคนสวยด้วยเพื่อความสมดุล", "bonus": "กล่าว เฮียหล่อหนึ่ง คนสวยสวยหนึ่ง จบพิธี"},
-        {"title": "ใบที่ 58 : โพไหลแบบมีหลักการ", "text": "หลักการคือเอิร์ธน่ารัก จบหลักการ", "bonus": "พนมมือแล้วกล่าว ขอให้เอิร์ธมีความสุขทุกลุค สาธุ"},
-        {"title": "ใบที่ 59 : ดวงจันทร์ยังงง", "text": "พระจันทร์เปลี่ยนข้างช้ากว่าโพของคุณ", "bonus": "พูด พระจันทร์ขา ไม่ต้องตามหนูทันก็ได้"},
-        {"title": "ใบที่ 60 : ทีมรักทุกเวอร์ชัน", "text": "คำทำนายสุดท้ายคือไม่ต้องเลือกเลยก็มีความสุขได้", "bonus": "บอก รักเอิร์ธทุกโพ รักตัวเองด้วย แล้วพักผ่อนค่ะ"}
-      ]
-    };
+    const fortunes = {"all": [{"title": "ใบที่ 01 : โพหมาเด็ก 🐶", "text": "ดวงวันนี้แพ้ทางความขี้อ้อน เห็นเอิร์ธยิ้มทีเดียวก็พร้อมโยนขนมให้ทั้งถุง", "bonus": "พูด “น้องเอิร์ธค้าบ เด็กดีของพี่” 3 ครั้ง แล้วห้ามใจอ่อน (ไม่น่ารอด)", "image": ""}, {"title": "ใบที่ 02 : โพพี่สาวคนสวย 🎀", "text": "ความสวยของพี่สาวทำให้กล้องหน้าของคุณอยากขอลาพักร้อน", "bonus": "กล่าว “พี่เอิร์ธคนสวยขา สวยจนหนูไม่มีคำศัพท์แล้วค่ะ”", "image": ""}, {"title": "ใบที่ 03 : โพแฟนหนุ่ม 💐", "text": "มีเกณฑ์มโนเดตใต้แสงจันทร์ แต่คู่เดตจริงคือหมอนข้าง", "bonus": "บอก “แฟนหนุ่มคะ ฝันดีนะคะ” กับรูปเอิร์ธหนึ่งครั้ง", "image": ""}, {"title": "ใบที่ 04 : โพเฮียเอิร์ธ 🕶️", "text": "เฮียหล่อหนึ่งที สติหลุดสามที", "bonus": "ท่อง “เฮียเอิร์ธขา รักเฮียที่สุด” 3 รอบ", "image": ""}, {"title": "ใบที่ 05 : โพลูกน้อย 🍼", "text": "เห็นแก้มแล้วอยากซื้อขนมให้ทั้งร้าน", "bonus": "พูด “ลูกแม่กินข้าวเยอะ ๆ นะ” แล้วอย่าลืมกินเอง", "image": ""}, {"title": "ใบที่ 06 : โพคุณหนู 👑", "text": "ดวงคุณหนูมาแรง ส่วนคุณเป็นคนถือถุงช้อปปิ้งในจินตนาการ", "bonus": "กล่าว “คุณหนูเอิร์ธขา วันนี้สวยอีกแล้วค่ะ”", "image": ""}, {"title": "ใบที่ 07 : โพแฟนสาว 🌷", "text": "ความหวานขึ้นสูงจนชาไข่มุกต้องสั่งหวานศูนย์", "bonus": "บอก “แฟนสาวคนสวยขา รักนะคะ”", "image": ""}, {"title": "ใบที่ 08 : โพพี่ชาย 🤍", "text": "วันนี้มีเกณฑ์อยากให้พี่ชม ทั้งที่ยังไม่ได้ทำอะไร", "bonus": "พูด “พี่เอิร์ธค้าบ หนูเก่งไหม” แล้วชมตัวเองด้วย", "image": ""}, {"title": "ใบที่ 09 : โพแมวส้ม 🐈", "text": "ความซนทำให้คุณหัวเราะจนลืมเรื่องเครียด", "bonus": "พูด “เอิร์ธเหมียว ๆ” หนึ่งครั้งแล้วส่งหัวใจ", "image": ""}, {"title": "ใบที่ 10 : โพเจ้าหญิง 👸", "text": "คืนนี้เจ้าหญิงสวยจนพระจันทร์ต้องหลบให้", "bonus": "กล่าว “เจ้าหญิงเอิร์ธทรงพระสวยค่ะ”", "image": ""}, {"title": "ใบที่ 11 : โพหนุ่มแว่น 🤓", "text": "แว่นหนึ่งอันทำให้คุณอ่านหนังสือไม่รู้เรื่อง", "bonus": "บอก “พี่เอิร์ธช่วยสอนวิชาใจแข็งหน่อยค่ะ”", "image": ""}, {"title": "ใบที่ 12 : โพตัวแม่ 💅", "text": "วันนี้คำว่าเริ่ดไม่พอ ต้องเพิ่มไม้เอกอีกสิบตัว", "bonus": "กล่าว “ตัวแม่เอิร์ธ เริ่ดที่สุดค่ะ”", "image": ""}, {"title": "ใบที่ 13 : โพเพื่อนสาว 💌", "text": "มีเกณฑ์เมาท์เรื่องเอิร์ธกับเพื่อนจนลืมเวลา", "bonus": "พูด “แก เอิร์ธสวยมาก!” แล้วส่งข้อความหาเพื่อนหนึ่งคน", "image": ""}, {"title": "ใบที่ 14 : โพน้องเล็ก 🐣", "text": "ใจคุณนุ่มเหมือนขนมปังเมื่อเห็นน้องยิ้ม", "bonus": "ท่อง “น้องเอิร์ธน่ารักที่สุดในโลก”", "image": ""}, {"title": "ใบที่ 15 : โพเจ้าชาย 🌙", "text": "ดวงโรแมนติกพุ่ง แต่ยังต้องล้างจานเอง", "bonus": "กล่าว “เจ้าชายเอิร์ธขา ขอให้คืนนี้ฝันดี”", "image": ""}, {"title": "ใบที่ 16 : โพหวานใจ 🍓", "text": "หัวใจหวานกว่าขนมทุกชนิดในงานวัด", "bonus": "บอก “หวานใจเอิร์ธ รักนะ” แล้วดื่มน้ำหนึ่งแก้ว", "image": ""}, {"title": "ใบที่ 17 : โพสายแฟ 👠", "text": "เห็นลุคใหม่แล้วอยากปรบมือให้จนมือแดง", "bonus": "พูด “เอิร์ธคะ ชุดนี้สิบเต็มสิบ!”", "image": ""}, {"title": "ใบที่ 18 : โพคนโปรด ⭐", "text": "ดวงดีเพราะมีคนโปรดให้ยิ้มถึงทุกวัน", "bonus": "กล่าว “เอิร์ธคนโปรด ขอให้มีความสุขทุกวัน”", "image": ""}, {"title": "ใบที่ 19 : โพไหล 🌊", "text": "โพเปลี่ยนเร็วกว่ากระทงลอยตามน้ำ", "bonus": "ท่อง “เฮียหล่อ พี่สาวสวย หมาเด็กน่ารัก” ให้ครบ", "image": ""}, {"title": "ใบที่ 20 : โพไม่มีจุดยืน 🤣", "text": "จักรวาลประชุมแล้วลงมติว่าเอิร์ธดีทุกโพ", "bonus": "ประกาศ “รักเอิร์ธทุกโพค่ะ แต่ขอมีเงินเหลือกินข้าวด้วย สาธุ”", "image": ""}]};
 
-    const bags = {po:[],pretty:[],mix:[]}; const last={};
-    function drawFortune(mode){const list=fortunes[mode];const result=document.getElementById('fortuneResult');if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];result.replaceChildren();for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}}
+    const bags = {all:[]}; const last={};
+    function drawFortune(mode){const list=fortunes[mode];const result=document.getElementById('fortuneResult');if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];result.replaceChildren();if(item.image && /^data:image\/(jpeg|png|webp);base64,/.test(item.image)){const img=document.createElement('img');img.src=item.image;img.alt=item.title;img.style.cssText='width:100%;max-height:340px;object-fit:contain;border-radius:16px;margin-bottom:12px';result.append(img);}for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}}
     let nextLaunch=0;
     function animateWish(text){const krathong=document.getElementById('krathongTemplate').content.firstElementChild.cloneNode(true);krathong.querySelector('.wish-paper').textContent=text;const pond=document.querySelector('.pond');const now=performance.now();const delay=Math.max(0,nextLaunch-now);nextLaunch=now+delay+Math.max(1600,24000*175/(pond.clientWidth+170));krathong.style.setProperty('--delay',`${delay}ms`);krathong.classList.add('active');krathong.addEventListener('animationend',()=>krathong.remove(),{once:true});pond.appendChild(krathong);}
     window.siteData={fortunes,bags,animateWish};
@@ -738,15 +631,19 @@ function guest(){if(auth.currentUser)return Promise.resolve(auth.currentUser);if
 onAuthStateChanged(auth,u=>{stopAdmin();const admin=u?.uid===adminUID;$('adminPanel').hidden=!admin;$('adminLogin').hidden=admin;if(admin){status('เข้าสู่ระบบแอดมินแล้ว');stopAdmin=onSnapshot(query(collection(db,'wishes'),limit(200)),snap=>{$('moderation').replaceChildren();for(const d of snap.docs){const w=d.data(),a=document.createElement('article');a.textContent=(w.approved?'✅ อนุมัติแล้ว: ':'⏳ รออนุมัติ: ')+w.name+' — '+w.wish;a.append(button(w.approved?'ซ่อน':'อนุมัติ',()=>updateDoc(d.ref,{approved:!w.approved})),button('ลบ',()=>{if(confirm('ลบคำอธิษฐานนี้?'))return deleteDoc(d.ref)}));$('moderation').append(a)}},e=>status(e.code));refreshEditor();}});
 $('loginBtn').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('adminEmail').value.trim(),$('adminPassword').value);$('adminPassword').value='';if(!isAdmin()){await signOut(auth);status('บัญชีนี้ไม่มีสิทธิ์แอดมิน')}}catch(e){status('เข้าสู่ระบบไม่ได้: '+e.code)}};
 $('logoutBtn').onclick=async()=>{await signOut(auth);status('ออกจากระบบแล้ว')};
-window.launchKrathong=async()=>{const wish=$('wishInput').value.trim(),name=$('wishName').value.trim();if(!wish){msg('เขียนคำอธิษฐานก่อนนะ');return}if(sending)return;sending=true;try{const u=await guest();await addDoc(collection(db,'wishes'),{name:name||'แฟนคลับ',wish,uid:u.uid,approved:false,createdAt:serverTimestamp()});animateWish(wish);$('wishInput').value='';msg('ส่งกระทงแล้ว ♡ รอแอดมินอนุมัติก่อนแสดงให้ทุกคนเห็น')}catch(e){msg('ส่งไม่สำเร็จ กรุณาลองอีกครั้ง: '+e.code)}finally{sending=false}};
-let seen=new Set();onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(50)),snap=>{const list=$('sharedWishes');list.replaceChildren();for(const d of snap.docs){const w=d.data();const a=document.createElement('article');a.textContent='🪷 '+w.name+' : '+w.wish;list.append(a);if(!seen.has(d.id)){animateWish(w.wish);seen.add(d.id)}}},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
-const original=JSON.parse(JSON.stringify(fortunes));let overrides={};function rebuild(){for(const team of Object.keys(original)){const map=new Map(original[team].map((f,i)=>[team+'-'+i,{...f,id:team+'-'+i}]));for(const [id,f] of Object.entries(overrides)){if(f.team!==team)continue;if(f.deleted)map.delete(id);else map.set(id,{...f,id})}fortunes[team]=[...map.values()];bags[team]=[]}refreshEditor()}
+window.launchKrathong=async()=>{const wish=$('wishInput').value.trim(),name=$('wishName').value.trim();if(!wish){msg('เขียนคำอธิษฐานก่อนนะ');return}if(sending)return;sending=true;try{const u=await guest();await addDoc(collection(db,'wishes'),{name:name||'แฟนคลับ',wish,uid:u.uid,approved:true,createdAt:serverTimestamp()});$('wishInput').value='';msg('ส่งกระทงแล้ว ♡ ทุกคนเห็นคำอธิษฐานได้เลย')}catch(e){msg('ส่งไม่สำเร็จ กรุณาลองอีกครั้ง: '+e.code)}finally{sending=false}};
+let seen=new Set();onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(100)),snap=>{const list=$('sharedWishes');list.replaceChildren();for(const d of snap.docs){const w=d.data();const a=document.createElement('article');a.textContent='🪷 '+w.name+' : '+w.wish;list.append(a);if(!seen.has(d.id)){animateWish(w.wish);seen.add(d.id)}}},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
+let editImage='';function previewImage(){const p=$('fPreview');p.hidden=!editImage;if(editImage)p.src=editImage;else p.removeAttribute('src');} $('clearImage').onclick=()=>{editImage='';$('fImage').value='';previewImage()};$('fImage').onchange=async()=>{const file=$('fImage').files[0];if(!file)return;try{const img=await createImageBitmap(file);const c=document.createElement('canvas');const scale=Math.min(1,800/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();const data=c.toDataURL('image/jpeg',0.75);if(data.length>600000)throw Error('รูปใหญ่เกินไป');editImage=data;previewImage();status('เลือกรูปแล้ว กดบันทึกใบเซียมซี')}catch(e){status('เปิดรูปไม่ได้: '+e.message)}};const original=JSON.parse(JSON.stringify(fortunes));let overrides={};function rebuild(){for(const team of Object.keys(original)){const map=new Map(original[team].map((f,i)=>[team+'-'+i,{...f,id:team+'-'+i}]));for(const [id,f] of Object.entries(overrides)){if(f.team!==team||!map.has(id)||f.deleted)continue;map.set(id,{...f,id})}fortunes[team]=[...map.values()];bags[team]=[]}refreshEditor()}
 onSnapshot(collection(db,'fortunes'),snap=>{overrides={};for(const d of snap.docs)overrides[d.id]=d.data();rebuild()},e=>status('โหลดเซียมซีไม่ได้: '+e.code));
 function refreshEditor(){const team=$('teamEdit').value,sel=$('fortuneEdit'),prev=sel.value;sel.replaceChildren();for(const f of fortunes[team]){const o=document.createElement('option');o.value=f.id||team+'-'+fortunes[team].indexOf(f);o.textContent=f.title;sel.append(o)}if([...sel.options].some(o=>o.value===prev))sel.value=prev;fillEditor()}
-function fillEditor(){const f=fortunes[$('teamEdit').value][$('fortuneEdit').selectedIndex];$('fTitle').value=f?.title||'';$('fText').value=f?.text||'';$('fBonus').value=f?.bonus||'';}
+function fillEditor(){const f=fortunes[$('teamEdit').value][$('fortuneEdit').selectedIndex];$('fTitle').value=f?.title||'';$('fText').value=f?.text||'';$('fBonus').value=f?.bonus||'';editImage=f?.image||'';$('fImage').value='';previewImage();}
 $('teamEdit').onchange=refreshEditor;$('fortuneEdit').onchange=fillEditor;
-async function saveFortune(add){if(!isAdmin())return;const team=$('teamEdit').value,title=$('fTitle').value.trim(),text=$('fText').value.trim(),bonus=$('fBonus').value.trim();if(!title||!text||!bonus){status('กรอกข้อมูลเซียมซีให้ครบ');return}const id=add?doc(collection(db,'fortunes')).id:$('fortuneEdit').value;if(!id)return;try{await setDoc(doc(db,'fortunes',id),{team,title,text,bonus,deleted:false});status('บันทึกเซียมซีแล้ว')}catch(e){status(e.code)}}
-$('saveFortune').onclick=()=>saveFortune(false);$('addFortune').onclick=()=>saveFortune(true);$('deleteFortune').onclick=async()=>{if(!isAdmin()||!$('fortuneEdit').value||!confirm('ลบใบนี้?'))return;try{await setDoc(doc(db,'fortunes',$('fortuneEdit').value),{team:$('teamEdit').value,deleted:true});status('ลบแล้ว')}catch(e){status(e.code)}};
+async function saveFortune(add){if(!isAdmin())return;const team=$('teamEdit').value,title=$('fTitle').value.trim(),text=$('fText').value.trim(),bonus=$('fBonus').value.trim();if(!title||!text||!bonus){status('กรอกข้อมูลเซียมซีให้ครบ');return}const id=add?doc(collection(db,'fortunes')).id:$('fortuneEdit').value;if(!id)return;try{await setDoc(doc(db,'fortunes',id),{team,title,text,bonus,image:editImage,deleted:false});status('บันทึกเซียมซีแล้ว')}catch(e){status(e.code)}}
+$('saveFortune').onclick=()=>saveFortune(false);
 const titleEl=$('eventTitle');if(titleEl){$('titleEdit').value=titleEl.textContent;onSnapshot(doc(db,'settings','site'),d=>{if(d.exists()&&typeof d.data().title==='string'){titleEl.textContent=d.data().title;$('titleEdit').value=d.data().title}},e=>status(e.code));}
 $('saveTitle').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','site'),{title:$('titleEdit').value.trim()});status('บันทึกชื่อเว็บแล้ว')}catch(e){status(e.code)}};
+
+onSnapshot(doc(db,'settings','hero'),d=>{const p=$('heroPhoto'),v=d.data()?.image||'';p.hidden=!/^data:image\/(jpeg|png|webp);base64,/.test(v);if(!p.hidden)p.src=v;else p.removeAttribute('src');},e=>status(e.code));
+$('saveHero').onclick=async()=>{if(!isAdmin())return;try{const file=$('heroFile').files[0];if(!file){status('เลือกรูปก่อน');return}const img=await createImageBitmap(file);const c=document.createElement('canvas'),scale=Math.min(1,800/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();const image=c.toDataURL('image/jpeg',.75);if(image.length>600000)throw Error('รูปใหญ่เกินไป');await setDoc(doc(db,'settings','hero'),{image});status('บันทึกรูปหลักแล้ว')}catch(e){status('บันทึกไม่ได้: '+(e.code||e.message))}};
+$('removeHero').onclick=async()=>{if(isAdmin())try{await setDoc(doc(db,'settings','hero'),{image:''});status('ลบรูปหลักแล้ว')}catch(e){status(e.code)}};
 </script></body></html>
