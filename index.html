@@ -106,25 +106,25 @@
       background:radial-gradient(circle at 35% 35%, #fffdf1 0, #fff4c7 45%, #ffe48c 82%);
       box-shadow:0 0 45px rgba(255,228,140,.58);
     }
-   .hero-inner {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
+    .hero-inner{width:100%;max-width:1100px;min-width:0;margin:0 auto;position:relative;z-index:1;text-align:center}
+    .chip{
+      display:inline-block;
+      background:rgba(255,255,255,.13);
+      color:#fff8f4;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:999px;
+      padding:8px 15px;
+      font-size:.9rem;
+      margin-bottom:18px;
     }
-    h1 {
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  font-family: "Mali", cursive;
-  color: white;
-  font-size: clamp(2rem, 6vw, 4.8rem);
-  line-height: 1.4;
-  text-shadow: 0 8px 30px rgba(22,10,51,.35);
-}
+    h1{
+      margin:0;
+      font-family:"Mali",cursive;
+      color:white;
+      font-size:clamp(2.4rem,6.6vw,5.2rem);
+      line-height:1.4;
+      text-shadow:0 8px 30px rgba(22,10,51,.35);
+    }
     .subtitle{
       max-width:720px;
       margin:22px auto 28px;
@@ -495,20 +495,12 @@
 @media(prefers-reduced-motion:reduce){.krathong.river-boat{animation:none;transform:translateX(var(--static-x));}.river-boat .krathong-emoji{animation:none}}
 
 h2{color:var(--heading-custom,#674a86)}
-#eventTitle{white-space:pre-line;overflow-wrap:anywhere}
-
-  #eventTitle .last-line {
-  position: relative;
-  display: inline-block;
-}
-
-#eventTitle .heart-icon {
-  position: absolute;
-  left: 100%;
-  margin-left: 12px;
-  font-size: 0.65em;
-}
-  </style>
+#eventTitle{margin:0 auto;width:100%;text-align:center;line-height:1.45;font-size:clamp(1.65rem,5.8vw,4.65rem);white-space:normal;overflow-wrap:normal}
+#eventTitle .title-line{display:block;text-align:center}
+#eventTitle .last-line{display:inline-block;position:relative}
+#eventTitle .heart-icon{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:.14em;font-size:.46em;line-height:1}
+@media(max-width:600px){#eventTitle{font-size:clamp(1.3rem,5.8vw,2.2rem)}#eventTitle .heart-icon{font-size:.42em;margin-left:.08em}}
+</style>
 </head>
 <body>
   <div class="stars"></div>
@@ -527,11 +519,7 @@ h2{color:var(--heading-custom,#674a86)}
     <div class="moon"></div>
     <div class="hero-inner">
       <div class="chip">🪷 คืนนี้ถวายใจให้ COOHEART  และถวายกระทงให้สายน้ำ 🪷</div>
-      <h1 id="eventTitle">
-  ลอยกระทงกับ<br>
-  <span class="name">COOHEART</span><br>
-  <span class="last-line">พร้อมเสี่ยงเซียมซี<span class="heart-icon">💗</span></span>
-</h1>
+      <h1 id="eventTitle"><span class="title-line">ลอยกระทงกับ</span><span class="title-line name">COOHEART</span><span class="title-line"><span class="last-line">พร้อมเสี่ยงเซียมซี<span class="heart-icon">💗</span></span></span></h1>
       <p class="subtitle">
 มาร่วมอวยพรให้กับ  COOHEART  ไปด้วยกัน ✨
       </p>
@@ -694,36 +682,24 @@ $('saveFortune').onclick=()=>saveFortune(false);
 const titleEl=$('eventTitle');
 const defaultTitle='ลอยกระทงกับ\nCOOHEART\nพร้อมเสี่ยงเซียมซี 💗';
 function renderTitle(value){
-  const text=(typeof value==='string'&&value.trim()?value.trim():defaultTitle);
+  const saved=(typeof value==='string'&&value.trim()?value.trim():defaultTitle);
+  const text=/cooheart/i.test(saved)?saved:defaultTitle;
   const normalized=text.replace(/\s*(COOHEART)\s*/gi,'\n$1\n').split('\n').map(x=>x.trim()).filter(Boolean).join('\n');
   titleEl.replaceChildren();
-  normalized.split('\n').forEach((line,i)=>{
-  if(i) titleEl.append(document.createElement('br'));
-
-  const span=document.createElement('span');
-
-  if(/^cooheart$/i.test(line)){
-    span.className='name';
-    span.textContent='COOHEART';
-  }else if(line.includes('💗')){
-    span.className='last-line';
-    span.textContent=line.replace('💗','').trim();
-
-    const heart=document.createElement('span');
-    heart.className='heart-icon';
-    heart.textContent='💗';
-    span.append(heart);
-  }else{
-    span.textContent=line;
-  }
-
-  titleEl.append(span);
-});
+  normalized.split('\n').forEach(line=>{
+    const row=document.createElement('span'); row.className='title-line';
+    if(/^cooheart$/i.test(line)){row.classList.add('name');row.textContent='COOHEART';}
+    else if(line.endsWith('💗')){
+      const label=document.createElement('span');label.className='last-line';label.textContent=line.slice(0,-2).trim();
+      const heart=document.createElement('span');heart.className='heart-icon';heart.textContent='💗';label.append(heart);row.append(label);
+    }else{row.textContent=line;}
+    titleEl.append(row);
+  });
   $('titleEdit').value=normalized;
 }
 renderTitle(defaultTitle);
 onSnapshot(doc(db,'settings','site'),d=>{renderTitle(d.data()?.title);},e=>status(e.code));
-$('saveTitle').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','site'),{title:$('titleEdit').value.trim()||defaultTitle},{merge:true});status('บันทึกชื่อเว็บแล้ว')}catch(e){status(e.code)}};
+$('saveTitle').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','site'),{title:/cooheart/i.test($('titleEdit').value)?$('titleEdit').value.trim():defaultTitle},{merge:true});status('บันทึกชื่อเว็บแล้ว')}catch(e){status(e.code)}};
 
 onSnapshot(doc(db,'settings','hero'),d=>{const p=$('heroPhoto'),v=d.data()?.image||'';p.hidden=!/^data:image\/(jpeg|png|webp);base64,/.test(v);if(!p.hidden)p.src=v;else p.removeAttribute('src');},e=>status(e.code));
 $('saveHero').onclick=async()=>{if(!isAdmin())return;try{const file=$('heroFile').files[0];if(!file){status('เลือกรูปก่อน');return}const img=await createImageBitmap(file);const c=document.createElement('canvas'),scale=Math.min(1,800/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();const image=c.toDataURL('image/jpeg',.75);if(image.length>600000)throw Error('รูปใหญ่เกินไป');await setDoc(doc(db,'settings','hero'),{image});status('บันทึกรูปหลักแล้ว')}catch(e){status('บันทึกไม่ได้: '+(e.code||e.message))}};
