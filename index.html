@@ -474,7 +474,27 @@
       .wish-input{flex-basis:100%}
     }
   .krathong-emoji svg{display:block;margin:auto;overflow:visible}.wish-paper{position:relative;z-index:2;transform:none;margin-bottom:0}.float-line svg{width:90px;height:auto;vertical-align:middle}
-#adminPanel input,#adminPanel textarea,#adminPanel select,#adminLogin input{display:block;width:100%;padding:12px;margin:8px 0;border:1px solid #e5bfd4;border-radius:12px;font:inherit}#adminPanel textarea{min-height:90px}#moderation article,#sharedWishes article{padding:12px;border-radius:12px;background:#fff5fa;color:#674a86;margin:8px 0;overflow-wrap:anywhere}#moderation button{margin:4px}.wish-paper{overflow-wrap:anywhere;max-height:110px;overflow:auto} [hidden]{display:none!important}</style>
+#adminPanel input,#adminPanel textarea,#adminPanel select,#adminLogin input{display:block;width:100%;padding:12px;margin:8px 0;border:1px solid #e5bfd4;border-radius:12px;font:inherit}#adminPanel textarea{min-height:90px}#moderation article,#sharedWishes article{padding:12px;border-radius:12px;background:#fff5fa;color:#674a86;margin:8px 0;overflow-wrap:anywhere}#moderation button{margin:4px}.wish-paper{overflow-wrap:anywhere;max-height:110px;overflow:auto} [hidden]{display:none!important}
+.pond{min-height:520px;background:linear-gradient(180deg,#27264f 0%,#455c91 33%,#528bb6 66%,#31749d 100%);isolation:isolate}
+.pond .floating-note{z-index:5;max-width:90%;font-size:.8rem}
+.pond .moon-reflect{width:68px;height:68px;top:46px;opacity:.8}
+.pond .moon-trail{top:112px;height:350px;opacity:.3}
+.pond .water-wave{height:120px}
+.krathong.river-boat{left:0;bottom:var(--depth);width:146px;z-index:var(--layer);animation:river-drift var(--duration) linear infinite;animation-delay:var(--offset);will-change:transform;cursor:pointer;outline-offset:4px}
+.river-boat .krathong-emoji{animation:river-bob 4s ease-in-out infinite;animation-delay:var(--offset);line-height:0}
+.river-boat .krathong-emoji svg{width:var(--boat-size);height:auto;max-width:100%;filter:drop-shadow(0 0 9px #ffd88b66)}
+.river-boat .wish-paper{width:138px;min-height:0;max-height:54px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;font-size:.72rem;padding:5px 7px;margin-bottom:2px;background:#fffaf0ed}
+.river-boat.decor .wish-paper{display:none}
+.river-boat.decor{pointer-events:none;opacity:.77}
+.river-boat:hover,.river-boat:focus{animation-play-state:paused;z-index:20}
+@keyframes river-drift{from{transform:translateX(-155px)}to{transform:translateX(calc(var(--river-width) + 12px))}}
+@keyframes river-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+.river-detail{background:#fff6ee;color:#5c4774;padding:12px 15px;border-radius:14px;margin-top:10px;white-space:pre-wrap;overflow-wrap:anywhere}
+#sharedWishes{max-height:240px;overflow:auto}
+@media(max-width:600px){.pond{min-height:500px}.river-boat .wish-paper{width:108px;font-size:.68rem}.krathong.river-boat{width:112px}.river-boat .krathong-emoji svg{max-width:105px}}
+@media(prefers-reduced-motion:reduce){.krathong.river-boat{animation:none;transform:translateX(var(--static-x));}.river-boat .krathong-emoji{animation:none}}
+
+</style>
 </head>
 <body>
   <div class="stars"></div>
@@ -597,7 +617,7 @@
             <div class="krathong-emoji"><svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg></div>
           </div></template>
         </div>
-        <div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงสาธารณะทันที กรุณาไม่ใส่ข้อมูลส่วนตัว</p><div id="sharedWishes" style="display:grid;gap:8px;color:white"></div>
+        <div id="riverDetail" class="river-detail" hidden></div><p id="riverCount" style="color:white;font-size:.85rem">กำลังโหลดคำอวยพร · กระทงประดับไม่มีข้อความ</p><div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงสาธารณะทันที กรุณาไม่ใส่ข้อมูลส่วนตัว</p><div id="sharedWishes" style="display:grid;gap:8px;color:white"></div>
       </div>
     </div>
   </section>
@@ -611,9 +631,24 @@
 
     const bags = {all:[]}; const last={};
     function drawFortune(mode){const list=fortunes[mode];const result=document.getElementById('fortuneResult');if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];result.replaceChildren();if(item.image && /^data:image\/(jpeg|png|webp);base64,/.test(item.image)){const img=document.createElement('img');img.src=item.image;img.alt=item.title;img.style.cssText='width:100%;max-height:340px;object-fit:contain;border-radius:16px;margin-bottom:12px';result.append(img);}for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}}
-    let nextLaunch=0;
-    function animateWish(text){const krathong=document.getElementById('krathongTemplate').content.firstElementChild.cloneNode(true);krathong.querySelector('.wish-paper').textContent=text;const pond=document.querySelector('.pond');const now=performance.now();const delay=Math.max(0,nextLaunch-now);nextLaunch=now+delay+Math.max(1600,24000*175/(pond.clientWidth+170));krathong.style.setProperty('--delay',`${delay}ms`);krathong.classList.add('active');krathong.addEventListener('animationend',()=>krathong.remove(),{once:true});pond.appendChild(krathong);}
-    window.siteData={fortunes,bags,animateWish};
+    const riverPond=document.querySelector('.pond');
+    const themes=[['#f9a6cd','#d85b98','#5c9e65','lotus'],['#e9c6ff','#9570c5','#699d8d','flower'],['#fff1c4','#e5a84e','#72a54c','leaf'],['#ff9cae','#cb507b','#6aaf79','heart'],['#ace7ef','#559eae','#559a7e','flower'],['#fff1e8','#e590ae','#477b54','lotus'],['#ffcf73','#e98938','#519468','flower'],['#cbd4ff','#7a8dd9','#6c9c70','leaf']];
+    function hashId(str){let h=0;for(const c of str)h=(Math.imul(h,31)+c.charCodeAt(0))>>>0;return h;}
+    function boatArt(i){const [p,q,g,shape]=themes[i%themes.length];let petals='';for(let j=0;j<7;j++){const x=26+j*18;if(shape==='lotus')petals+=`<path d="M${x-13} 91 Q${x-15} 70 ${x} 53 Q${x+15} 70 ${x+13} 91Z" fill="${p}" stroke="${q}" stroke-width="1.3"/>`;else if(shape==='heart')petals+=`<path d="M${x} 94 C${x-29} 75 ${x-12} 62 ${x} 75 C${x+12} 62 ${x+29} 75 ${x} 94Z" fill="${p}" stroke="${q}"/>`;else if(shape==='leaf')petals+=`<path d="M${x-11} 92 L${x} 55 L${x+11} 92Z" fill="${j%2?p:g}" stroke="${g}"/>`;else petals+=`<g fill="${p}" stroke="${q}" stroke-width=".8">${Array.from({length:5},(_,k)=>`<ellipse cx="${x}" cy="73" rx="6" ry="10" transform="rotate(${k*72} ${x} 81)"/>`).join('')}</g><circle cx="${x}" cy="81" r="4" fill="#ffe58c"/>`;}
+    return `<svg viewBox="0 0 160 125" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="80" cy="115" rx="69" ry="6" fill="#c7e9ff" opacity=".22"/><path d="M12 85 Q80 68 148 85 L133 106 Q80 121 27 106Z" fill="${g}" stroke="#346a56"/><ellipse cx="80" cy="84" rx="66" ry="16" fill="${g}"/><g>${petals}</g><rect x="75" y="30" width="10" height="48" rx="3" fill="#fff0ba" stroke="#e8c46f"/><path d="M80 30V25" stroke="#604234" stroke-width="2"/><circle cx="80" cy="19" r="18" fill="#ffd67a" opacity=".16"/><path d="M80 3 C66 20 74 27 80 27 C91 27 91 16 80 3Z" fill="#ffb450"/><path d="M80 14 Q72 25 80 26 Q87 24 80 14Z" fill="#fffbd3"/><path d="M22 99 Q80 111 138 99" fill="none" stroke="${p}" stroke-width="3" stroke-linecap="round"/></svg>`;}
+    const boats=new Map();
+    function syncSize(){riverPond.style.setProperty('--river-width',riverPond.clientWidth+'px');}
+    syncSize();new ResizeObserver(syncSize).observe(riverPond);
+    function syncRiver(items){const max=24;const selected=items.slice(0,max);const display=selected.map(x=>({...x,decor:false}));for(let i=0;i<Math.max(0,12-display.length);i++)display.push({id:'decor-'+i,decor:true});const wanted=new Set(display.map(x=>x.id));for(const [id,node] of boats){if(!wanted.has(id)){node.remove();boats.delete(id);}}
+    display.forEach((w,i)=>{let node=boats.get(w.id);if(!node){node=document.getElementById('krathongTemplate').content.firstElementChild.cloneNode(true);node.className='krathong river-boat'+(w.decor?' decor':'');const h=hashId(w.id);node.querySelector('.krathong-emoji').innerHTML=boatArt(h%themes.length);node.style.setProperty('--depth',(10+(i%4)*100)+'px');node.style.setProperty('--layer',String(5-i%4));node.style.setProperty('--duration',(35+(i%4)*6)+'s');node.style.setProperty('--offset',(-((i*0.382)%1)*(35+(i%4)*6))+'s');node.style.setProperty('--boat-size',(85+(3-i%4)*15)+'px');node.style.setProperty('--static-x',((i*83)%Math.max(110,riverPond.clientWidth-100))+'px');riverPond.append(node);boats.set(w.id,node);}
+    if(!w.decor){const text=(w.name||'แฟนคลับ')+' : '+w.wish;node.querySelector('.wish-paper').textContent=text;node.title=text;node.tabIndex=0;node.setAttribute('role','button');node.setAttribute('aria-label','อ่านคำอวยพร '+text);const show=()=>{const detail=document.getElementById('riverDetail');detail.hidden=false;detail.textContent=text;};node.onclick=show;node.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}};}});
+    document.getElementById('riverCount').textContent=`คำอวยพรที่โหลด ${items.length} ข้อความ · ลอยวนครั้งละ ${selected.length} ใบ (สูงสุด 24 ใบ) · แตะกระทงเพื่ออ่านข้อความเต็ม`;
+    }
+    let riverItems=[], riverPage=0;
+    function updateRiver(items){riverItems=items;riverPage=0;syncRiver(items);}
+    setInterval(()=>{if(riverItems.length>24){riverPage=(riverPage+12)%riverItems.length;syncRiver([...riverItems.slice(riverPage),...riverItems.slice(0,riverPage)]);}},45000);
+    syncRiver([]);
+    window.siteData={fortunes,bags,syncRiver:updateRiver};
     window.launchKrathong=()=>{document.getElementById('launchMessage').textContent='กำลังเชื่อมต่อระบบออนไลน์ กรุณาลองอีกครั้ง';};
     document.getElementById('wishInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing)window.launchKrathong();});
   </script>
@@ -623,7 +658,7 @@ import {getAuth,onAuthStateChanged,signInAnonymously,signInWithEmailAndPassword,
 import {getFirestore,collection,doc,addDoc,setDoc,deleteDoc,updateDoc,onSnapshot,query,where,limit,serverTimestamp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 const app=initializeApp({apiKey:"AIzaSyDg1ofc2G7_8aCklBf_xg2uVE9-LBsv-lA",authDomain:"cooheart-loykrathong.firebaseapp.com",projectId:"cooheart-loykrathong",storageBucket:"cooheart-loykrathong.firebasestorage.app",messagingSenderId:"178150379025",appId:"1:178150379025:web:f59fceecf642cf8f5aebb0"});
 const auth=getAuth(app),db=getFirestore(app),adminUID='eMlyMmMMPraxQrRDUySmE3DUa6s1';
-const $=id=>document.getElementById(id),{fortunes,bags,animateWish}=window.siteData;
+const $=id=>document.getElementById(id),{fortunes,bags,syncRiver}=window.siteData;
 const isAdmin=()=>auth.currentUser?.uid===adminUID;const status=t=>$('adminStatus').textContent=t;const msg=t=>$('launchMessage').textContent=t;
 const button=(label,fn)=>{const b=document.createElement('button');b.className='btn primary';b.textContent=label;b.onclick=async()=>{b.disabled=true;try{await fn()}catch(e){status('ไม่สำเร็จ: '+e.code)}finally{b.disabled=false}};return b};
 let stopAdmin=()=>{},guestPromise=null,sending=false;
@@ -632,7 +667,7 @@ onAuthStateChanged(auth,u=>{stopAdmin();const admin=u?.uid===adminUID;$('adminPa
 $('loginBtn').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('adminEmail').value.trim(),$('adminPassword').value);$('adminPassword').value='';if(!isAdmin()){await signOut(auth);status('บัญชีนี้ไม่มีสิทธิ์แอดมิน')}}catch(e){status('เข้าสู่ระบบไม่ได้: '+e.code)}};
 $('logoutBtn').onclick=async()=>{await signOut(auth);status('ออกจากระบบแล้ว')};
 window.launchKrathong=async()=>{const wish=$('wishInput').value.trim(),name=$('wishName').value.trim();if(!wish){msg('เขียนคำอธิษฐานก่อนนะ');return}if(sending)return;sending=true;try{const u=await guest();await addDoc(collection(db,'wishes'),{name:name||'แฟนคลับ',wish,uid:u.uid,approved:true,createdAt:serverTimestamp()});$('wishInput').value='';msg('ส่งกระทงแล้ว ♡ ทุกคนเห็นคำอธิษฐานได้เลย')}catch(e){msg('ส่งไม่สำเร็จ กรุณาลองอีกครั้ง: '+e.code)}finally{sending=false}};
-let seen=new Set();onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(100)),snap=>{const list=$('sharedWishes');list.replaceChildren();for(const d of snap.docs){const w=d.data();const a=document.createElement('article');a.textContent='🪷 '+w.name+' : '+w.wish;list.append(a);if(!seen.has(d.id)){animateWish(w.wish);seen.add(d.id)}}},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
+onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(100)),snap=>{const list=$('sharedWishes');list.replaceChildren();const items=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));for(const w of items){const a=document.createElement('article');a.textContent='🪷 '+w.name+' : '+w.wish;list.append(a);}syncRiver(items);},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
 let editImage='';function previewImage(){const p=$('fPreview');p.hidden=!editImage;if(editImage)p.src=editImage;else p.removeAttribute('src');} $('clearImage').onclick=()=>{editImage='';$('fImage').value='';previewImage()};$('fImage').onchange=async()=>{const file=$('fImage').files[0];if(!file)return;try{const img=await createImageBitmap(file);const c=document.createElement('canvas');const scale=Math.min(1,800/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();const data=c.toDataURL('image/jpeg',0.75);if(data.length>600000)throw Error('รูปใหญ่เกินไป');editImage=data;previewImage();status('เลือกรูปแล้ว กดบันทึกใบเซียมซี')}catch(e){status('เปิดรูปไม่ได้: '+e.message)}};const original=JSON.parse(JSON.stringify(fortunes));let overrides={};function rebuild(){for(const team of Object.keys(original)){const map=new Map(original[team].map((f,i)=>[team+'-'+i,{...f,id:team+'-'+i}]));for(const [id,f] of Object.entries(overrides)){if(f.team!==team||!map.has(id)||f.deleted)continue;map.set(id,{...f,id})}fortunes[team]=[...map.values()];bags[team]=[]}refreshEditor()}
 onSnapshot(collection(db,'fortunes'),snap=>{overrides={};for(const d of snap.docs)overrides[d.id]=d.data();rebuild()},e=>status('โหลดเซียมซีไม่ได้: '+e.code));
 function refreshEditor(){const team=$('teamEdit').value,sel=$('fortuneEdit'),prev=sel.value;sel.replaceChildren();for(const f of fortunes[team]){const o=document.createElement('option');o.value=f.id||team+'-'+fortunes[team].indexOf(f);o.textContent=f.title;sel.append(o)}if([...sel.options].some(o=>o.value===prev))sel.value=prev;fillEditor()}
