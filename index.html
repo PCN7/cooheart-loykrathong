@@ -692,7 +692,7 @@ $('teamEdit').onchange=refreshEditor;$('fortuneEdit').onchange=fillEditor;
 async function saveFortune(add){if(!isAdmin())return;const team=$('teamEdit').value,title=$('fTitle').value.trim(),text=$('fText').value.trim(),bonus=$('fBonus').value.trim();if(!title||!text||!bonus){status('กรอกข้อมูลเซียมซีให้ครบ');return}const id=add?doc(collection(db,'fortunes')).id:$('fortuneEdit').value;if(!id)return;try{await setDoc(doc(db,'fortunes',id),{team,title,text,bonus,image:editImage,deleted:false});status('บันทึกเซียมซีแล้ว')}catch(e){status(e.code)}}
 $('saveFortune').onclick=()=>saveFortune(false);
 const titleEl=$('eventTitle');
-const defaultTitle='ลอยกระทงกับ\nCOOHEART\nพร้อมเสี่ยงเซียมซี 💗';
+const defaultTitle='ลอยกระทงกับ\nCOOHEART\n 💗';
 function renderTitle(value){
   const saved=(typeof value==='string'&&value.trim()?value.trim():defaultTitle);
   const text=/cooheart/i.test(saved)?saved:defaultTitle;
