@@ -106,7 +106,7 @@
       background:radial-gradient(circle at 35% 35%, #fffdf1 0, #fff4c7 45%, #ffe48c 82%);
       box-shadow:0 0 45px rgba(255,228,140,.58);
     }
-    .hero-inner{width:100%;max-width:1100px;min-width:0;margin:0 auto;position:relative;z-index:1;text-align:center}
+    .hero-inner{max-width:900px; position:relative; z-index:1}
     .chip{
       display:inline-block;
       background:rgba(255,255,255,.13);
@@ -122,7 +122,7 @@
       font-family:"Mali",cursive;
       color:white;
       font-size:clamp(2.4rem,6.6vw,5.2rem);
-      line-height:1.4;
+      line-height:1.08;
       text-shadow:0 8px 30px rgba(22,10,51,.35);
     }
     .subtitle{
@@ -494,23 +494,17 @@
 @media(max-width:600px){.pond{min-height:500px}.river-boat .wish-paper{width:108px;font-size:.68rem}.krathong.river-boat{width:112px}.river-boat .krathong-emoji svg{max-width:105px}}
 @media(prefers-reduced-motion:reduce){.krathong.river-boat{animation:none;transform:translateX(var(--static-x));}.river-boat .krathong-emoji{animation:none}}
 
-h2{color:var(--heading-custom,#674a86)}
-#eventTitle{margin:0 auto;width:100%;text-align:center;line-height:1.45;font-size:clamp(1.65rem,5.8vw,4.65rem);white-space:normal;overflow-wrap:normal}
-#eventTitle .title-line{display:block;text-align:center}
-#eventTitle .last-line{display:inline-block;position:relative}
-#eventTitle .heart-icon{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:.14em;font-size:.46em;line-height:1}
-@media(max-width:600px){#eventTitle{font-size:clamp(1.3rem,5.8vw,2.2rem)}#eventTitle .heart-icon{font-size:.42em;margin-left:.08em}}
 
-/* Hero typography: independent of the admin card-heading theme. */
-header.hero {width:100%; box-sizing:border-box; overflow:hidden; padding:76px 18px 50px;}
-header.hero .hero-inner {width:100%; max-width:1100px; margin-inline:auto; text-align:center;}
-header.hero .chip {display:inline-block; color:#fff8f4; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:9px 16px; font:400 .9rem/1.65 "Prompt",sans-serif; margin-bottom:22px;}
-header.hero #eventTitle {font-family:"Mali",cursive; font-weight:700; color:#fff; font-size:clamp(2rem,7.2vw,5.2rem); line-height:1.45; text-align:center; margin:0 auto; width:100%; text-shadow:0 5px 22px rgba(20,10,45,.3);}
-header.hero #eventTitle .title-line {display:block; color:#fff; text-align:center;}
-header.hero #eventTitle .title-line.name {color:#ffe69c;}
-header.hero #eventTitle .last-line {position:relative;display:inline-block; color:inherit;}
-header.hero #eventTitle .heart-icon {position:absolute; left:100%; top:50%; transform:translateY(-50%); margin-left:.12em; font-size:.48em; line-height:1;}
-@media(max-width:600px){header.hero #eventTitle{font-size:clamp(1.45rem,7.1vw,2.65rem);line-height:1.55;} header.hero .chip{font-size:.75rem;} header.hero{padding-inline:12px;} header.hero #eventTitle .heart-icon{font-size:.42em;}}
+    /* เอฟเฟกต์เขย่ากระบอกเซียมซี */
+    .stick-jar.shaking{animation:jar-shake .11s ease-in-out infinite;}
+    .stick-jar.shaking .stick{animation:stick-rattle .16s ease-in-out infinite alternate;}
+    .stick-jar.shaking .stick:nth-child(even){animation-delay:-.08s;}
+    .stick-jar.drawing .stick.selected{animation:stick-pop .8s cubic-bezier(.2,.8,.2,1) forwards;z-index:3;background:linear-gradient(180deg,#ffe9a3,#d58a3f);box-shadow:0 0 18px #ffd56f;}
+    @keyframes jar-shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-7px) rotate(-2deg)}75%{transform:translateX(7px) rotate(2deg)}}
+    @keyframes stick-rattle{from{transform:translateY(0) rotate(-12deg)}to{transform:translateY(-16px) rotate(12deg)}}
+    @keyframes stick-pop{0%{transform:translateY(0) rotate(0);opacity:1}55%{transform:translateY(-78px) rotate(12deg);opacity:1}100%{transform:translateY(-115px) rotate(22deg);opacity:0}}
+    .stick-jar.shaking .floating-note{background:#d98ab4;color:#fff;}
+    @media(prefers-reduced-motion:reduce){.stick-jar.shaking,.stick-jar.shaking .stick,.stick-jar.drawing .stick.selected{animation-duration:.01ms;animation-iteration-count:1}}
 
 </style>
 </head>
@@ -531,14 +525,7 @@ header.hero #eventTitle .heart-icon {position:absolute; left:100%; top:50%; tran
     <div class="moon"></div>
     <div class="hero-inner">
       <div class="chip">🪷 คืนนี้ถวายใจให้ COOHEART  และถวายกระทงให้สายน้ำ 🪷</div>
-      <h1 id="eventTitle">
-  <span class="title-line">ลอยกระทงกับ</span>
-  <span class="title-line name">COOHEART</span>
-  <span class="title-line">ไปด้วยกัน</span>
-  <span class="last-line">
-    <span class="heart-icon">💗</span>
-  </span>
-</h1>
+      <h1 id="eventTitle">ลอยกระทงกับ <span class="name">  </span><br> พร้อมเสี่ยงเซียมซี 💗</h1>
       <p class="subtitle">
 มาร่วมอวยพรให้กับ  COOHEART  ไปด้วยกัน ✨
       </p>
@@ -640,20 +627,44 @@ header.hero #eventTitle .heart-icon {position:absolute; left:100%; top:50%; tran
             <div class="krathong-emoji"><svg viewBox="0 0 160 125" width="140" height="109" xmlns="http://www.w3.org/2000/svg" aria-label="กระทงใบตองประดับดอกไม้และเทียน"><ellipse cx="80" cy="113" rx="69" ry="8" fill="#337fa8" opacity=".35"/><path d="M15 85 Q80 68 145 85 L131 107 Q80 122 29 107Z" fill="#367e56"/><ellipse cx="80" cy="85" rx="65" ry="17" fill="#6dad65"/><g fill="#a4d784" stroke="#438858" stroke-width="1.5"><path d="M18 90 L33 54 L48 96Z"/><path d="M39 99 L57 64 L72 103Z"/><path d="M64 104 L80 68 L96 104Z"/><path d="M88 103 L103 64 L121 99Z"/><path d="M112 96 L127 54 L142 90Z"/></g><rect x="74" y="32" width="12" height="49" rx="3" fill="#ffe7a1" stroke="#edbd60"/><path d="M80 32V27" stroke="#63463b" stroke-width="2"/><path d="M80 4 C67 20 74 28 80 28 C89 28 91 17 80 4Z" fill="#ffb74f"/><path d="M80 15 Q73 25 80 27 Q86 24 80 15Z" fill="#fff4b0"/><g fill="#f5a6c5" stroke="#d978a4" stroke-width="1"><path d="M30 82 Q18 65 37 69 Q40 51 48 71 Q66 60 63 81 Q48 96 30 82Z"/><path d="M97 82 Q85 65 104 69 Q107 51 115 71 Q133 60 130 81 Q115 96 97 82Z"/></g><g fill="#ffe18a"><circle cx="45" cy="78" r="5"/><circle cx="112" cy="78" r="5"/><circle cx="65" cy="88" r="5"/><circle cx="95" cy="88" r="5"/></g></svg></div>
           </div></template>
         </div>
-        <div id="riverDetail" class="river-detail" hidden></div><p id="riverCount" style="color:white;font-size:.85rem">กำลังโหลดคำอวยพร · กระทงประดับไม่มีข้อความ</p><div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงสาธารณะทันที กรุณาไม่ใส่ข้อมูลส่วนตัว</p>
+        <div id="riverDetail" class="river-detail" hidden></div><p id="riverCount" style="color:white;font-size:.85rem">กำลังโหลดคำอวยพร · กระทงประดับไม่มีข้อความ</p><div id="launchMessage" class="launch-msg" role="status"></div><p style="color:white;font-size:.85rem">คำอธิษฐานจะแสดงสาธารณะทันที กรุณาไม่ใส่ข้อมูลส่วนตัว</p><div id="sharedWishes" style="display:grid;gap:8px;color:white"></div>
       </div>
     </div>
   </section>
 
-  <section><div class="card"><details><summary>🔐 สำหรับแอดมิน</summary><div id="adminLogin"><p>เข้าสู่ระบบด้วยบัญชีที่สร้างไว้ใน Firebase</p><input id="adminEmail" type="email" placeholder="อีเมล"><input id="adminPassword" type="password" placeholder="รหัสผ่าน"><button id="loginBtn" class="btn primary">เข้าสู่ระบบ</button></div><p id="adminStatus" role="status"></p><div id="adminPanel" hidden><button id="logoutBtn" class="btn primary">ออกจากระบบ</button><h3>จัดการคำอธิษฐาน</h3><div id="moderation"></div><h3>แก้ไขชื่อหน้าเว็บ</h3><textarea id="titleEdit" maxlength="180" placeholder="พิมพ์ขึ้นบรรทัดใหม่ได้"></textarea><p>คำว่า COOHEART จะเป็นสีทองและแยกบรรทัดโดยอัตโนมัติ</p><button id="saveTitle" class="btn primary">บันทึกชื่อเว็บ</button><h3>รูปหลักหน้าเว็บ</h3><input id="heroFile" type="file" accept="image/jpeg,image/png,image/webp"><button id="saveHero" class="btn primary">บันทึกรูปหลัก</button><button id="removeHero" class="btn primary">ลบรูปหลัก</button><h3>🎨 ปรับแต่งหน้าตาเว็บไซต์</h3><p>เลือกภาพจากเครื่องแล้วกดบันทึก ผู้เล่นทุกคนจะเห็นภาพใหม่ ไม่ต้องอัปโหลด GitHub อีก</p><label>ตำแหน่งภาพ<select id="bgTarget"><option value="page">พื้นหลังทั้งเว็บไซต์</option><option value="hero">พื้นหลังหน้าเปิด</option><option value="river">พื้นหลังแม่น้ำ</option></select></label><input id="bgFile" type="file" accept="image/jpeg,image/png,image/webp"><img id="bgPreview" hidden alt="ตัวอย่างพื้นหลัง" style="max-width:100%;max-height:220px;border-radius:12px;object-fit:contain"><button id="saveBg" class="btn primary">บันทึกภาพพื้นหลัง</button> <button id="clearBg" class="btn primary">คืนพื้นหลังเดิม</button><h4>สีและความโปร่งใส</h4><label>สีปุ่ม<input id="themePink" type="color" value="#ffb8d7"></label><label>สีหัวข้อ<input id="themeHeading" type="color" value="#674a86"></label><label>สีพื้นการ์ด<input id="themeCard" type="color" value="#fffaf7"></label><label>ความทึบของการ์ด<input id="themeOpacity" type="range" min="75" max="100" value="90"></label><button id="saveTheme" class="btn primary">บันทึกสีเว็บไซต์</button> <button id="resetTheme" class="btn primary">คืนสีเดิม</button><h3>แก้ไขเซียมซี</h3><select id="teamEdit" hidden><option value="all">ทุกโพ</option></select><select id="fortuneEdit"></select><label>ชื่อใบเซียมซี<input id="fTitle" maxlength="160"></label><label>คำทำนาย<textarea id="fText" maxlength="1000"></textarea></label><label>เสริมดวงคืนนี้<textarea id="fBonus" maxlength="1000"></textarea></label><button id="saveFortune" class="btn primary">บันทึกใบเซียมซี</button><label>รูปประจำใบเซียมซี<input id="fImage" type="file" accept="image/jpeg,image/png,image/webp"></label><img id="fPreview" hidden style="max-width:100%;max-height:240px;border-radius:12px" alt="ตัวอย่างรูป"><button id="clearImage" class="btn primary">เอารูปออก</button></div></details></div></section><footer>
-    Made with 💗 for people who are very normal about Earth  COOHEART  🌙
+  <section><div class="card"><details><summary>🔐 สำหรับแอดมิน</summary><div id="adminLogin"><p>เข้าสู่ระบบด้วยบัญชีที่สร้างไว้ใน Firebase</p><input id="adminEmail" type="email" placeholder="อีเมล"><input id="adminPassword" type="password" placeholder="รหัสผ่าน"><button id="loginBtn" class="btn primary">เข้าสู่ระบบ</button></div><p id="adminStatus" role="status"></p><div id="adminPanel" hidden><button id="logoutBtn" class="btn primary">ออกจากระบบ</button><h3>จัดการคำอธิษฐาน</h3><div id="moderation"></div><h3>แก้ไขชื่อหน้าเว็บ</h3><input id="titleEdit" maxlength="180"><button id="saveTitle" class="btn primary">บันทึกชื่อเว็บ</button><h3>รูปหลักหน้าเว็บ</h3><input id="heroFile" type="file" accept="image/jpeg,image/png,image/webp"><button id="saveHero" class="btn primary">บันทึกรูปหลัก</button><button id="removeHero" class="btn primary">ลบรูปหลัก</button><h3>แก้ไขเซียมซี</h3><select id="teamEdit" hidden><option value="all">ทุกโพ</option></select><select id="fortuneEdit"></select><label>ชื่อใบเซียมซี<input id="fTitle" maxlength="160"></label><label>คำทำนาย<textarea id="fText" maxlength="1000"></textarea></label><label>เสริมดวงคืนนี้<textarea id="fBonus" maxlength="1000"></textarea></label><button id="saveFortune" class="btn primary">บันทึกใบเซียมซี</button><label>รูปประจำใบเซียมซี<input id="fImage" type="file" accept="image/jpeg,image/png,image/webp"></label><img id="fPreview" hidden style="max-width:100%;max-height:240px;border-radius:12px" alt="ตัวอย่างรูป"><button id="clearImage" class="btn primary">เอารูปออก</button></div></details></div></section><footer>
+    Made with 💗 for people who are very normal about Earth  COOHEART  (ไม่ปกติเลยนิดนึง) 🌙
   </footer>
 
   <script>
     const fortunes = {"all": [{"title": "ใบที่ 01 : โพหมาเด็ก 🐶", "text": "ดวงวันนี้แพ้ทางความขี้อ้อน เห็น COOHEART ยิ้มทีเดียวก็พร้อมโยนขนมให้ทั้งถุง", "bonus": "พูด “น้อง COOHEART ค้าบ เด็กดีของพี่” 3 ครั้ง แล้วห้ามใจอ่อน (ไม่น่ารอด)", "image": ""}, {"title": "ใบที่ 02 : โพพี่สาวคนสวย 🎀", "text": "ความสวยของพี่สาวทำให้กล้องหน้าของคุณอยากขอลาพักร้อน", "bonus": "กล่าว “พี่ COOHEART คนสวยขา สวยจนหนูไม่มีคำศัพท์แล้วค่ะ”", "image": ""}, {"title": "ใบที่ 03 : โพแฟนหนุ่ม 💐", "text": "มีเกณฑ์มโนเดตใต้แสงจันทร์ แต่คู่เดตจริงคือหมอนข้าง", "bonus": "บอก “แฟนหนุ่มคะ ฝันดีนะคะ” กับรูป COOHEART หนึ่งครั้ง", "image": ""}, {"title": "ใบที่ 04 : โพเฮีย COOHEART  🕶️", "text": "เฮียหล่อหนึ่งที สติหลุดสามที", "bonus": "ท่อง “เฮีย COOHEART ขา รักเฮียที่สุด” 3 รอบ", "image": ""}, {"title": "ใบที่ 05 : โพลูกน้อย 🍼", "text": "เห็นแก้มแล้วอยากซื้อขนมให้ทั้งร้าน", "bonus": "พูด “ลูกแม่กินข้าวเยอะ ๆ นะ” แล้วอย่าลืมกินเอง", "image": ""}, {"title": "ใบที่ 06 : โพคุณหนู 👑", "text": "ดวงคุณหนูมาแรง ส่วนคุณเป็นคนถือถุงช้อปปิ้งในจินตนาการ", "bonus": "กล่าว “คุณหนู COOHEART ขา วันนี้สวยอีกแล้วค่ะ”", "image": ""}, {"title": "ใบที่ 07 : โพแฟนสาว 🌷", "text": "ความหวานขึ้นสูงจนชาไข่มุกต้องสั่งหวานศูนย์", "bonus": "บอก “แฟนสาวคนสวยขา รักนะคะ”", "image": ""}, {"title": "ใบที่ 08 : โพพี่ชาย 🤍", "text": "วันนี้มีเกณฑ์อยากให้พี่ชม ทั้งที่ยังไม่ได้ทำอะไร", "bonus": "พูด “พี่ COOHEART ค้าบ หนูเก่งไหม” แล้วชมตัวเองด้วย", "image": ""}, {"title": "ใบที่ 09 : โพแมวส้ม 🐈", "text": "ความซนทำให้คุณหัวเราะจนลืมเรื่องเครียด", "bonus": "พูด “ COOHEART เหมียว ๆ” หนึ่งครั้งแล้วส่งหัวใจ", "image": ""}, {"title": "ใบที่ 10 : โพเจ้าหญิง 👸", "text": "คืนนี้เจ้าหญิงสวยจนพระจันทร์ต้องหลบให้", "bonus": "กล่าว “เจ้าหญิง COOHEART ทรงพระสวยค่ะ”", "image": ""}, {"title": "ใบที่ 11 : โพหนุ่มแว่น 🤓", "text": "แว่นหนึ่งอันทำให้คุณอ่านหนังสือไม่รู้เรื่อง", "bonus": "บอก “พี่ COOHEART ช่วยสอนวิชาใจแข็งหน่อยค่ะ”", "image": ""}, {"title": "ใบที่ 12 : โพตัวแม่ 💅", "text": "วันนี้คำว่าเริ่ดไม่พอ ต้องเพิ่มไม้เอกอีกสิบตัว", "bonus": "กล่าว “ตัวแม่ COOHEART  เริ่ดที่สุดค่ะ”", "image": ""}, {"title": "ใบที่ 13 : โพเพื่อนสาว 💌", "text": "มีเกณฑ์เมาท์เรื่อง COOHEART กับเพื่อนจนลืมเวลา", "bonus": "พูด “แก  COOHEART สวยมาก!” แล้วส่งข้อความหาเพื่อนหนึ่งคน", "image": ""}, {"title": "ใบที่ 14 : โพน้องเล็ก 🐣", "text": "ใจคุณนุ่มเหมือนขนมปังเมื่อเห็นน้องยิ้ม", "bonus": "ท่อง “น้อง COOHEART น่ารักที่สุดในโลก”", "image": ""}, {"title": "ใบที่ 15 : โพเจ้าชาย 🌙", "text": "ดวงโรแมนติกพุ่ง แต่ยังต้องล้างจานเอง", "bonus": "กล่าว “เจ้าชาย COOHEART ขา ขอให้คืนนี้ฝันดี”", "image": ""}, {"title": "ใบที่ 16 : โพหวานใจ 🍓", "text": "หัวใจหวานกว่าขนมทุกชนิดในงานวัด", "bonus": "บอก “หวานใจ COOHEART  รักนะ” แล้วดื่มน้ำหนึ่งแก้ว", "image": ""}, {"title": "ใบที่ 17 : โพสายแฟ 👠", "text": "เห็นลุคใหม่แล้วอยากปรบมือให้จนมือแดง", "bonus": "พูด “ COOHEART คะ ชุดนี้สิบเต็มสิบ!”", "image": ""}, {"title": "ใบที่ 18 : โพคนโปรด ⭐", "text": "ดวงดีเพราะมีคนโปรดให้ยิ้มถึงทุกวัน", "bonus": "กล่าว “ COOHEART คนโปรด ขอให้มีความสุขทุกวัน”", "image": ""}, {"title": "ใบที่ 19 : โพไหล 🌊", "text": "โพเปลี่ยนเร็วกว่ากระทงลอยตามน้ำ", "bonus": "ท่อง “เฮียหล่อ พี่สาวสวย หมาเด็กน่ารัก” ให้ครบ", "image": ""}, {"title": "ใบที่ 20 : โพไม่มีจุดยืน 🤣", "text": "จักรวาลประชุมแล้วลงมติว่า COOHEART ดีทุกโพ", "bonus": "ประกาศ “รัก COOHEART ทุกโพค่ะ แต่ขอมีเงินเหลือกินข้าวด้วย สาธุ”", "image": ""}]};
 
-    const bags = {all:[]}; const last={};
-    function drawFortune(mode){const list=fortunes[mode];const result=document.getElementById('fortuneResult');if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];result.replaceChildren();if(item.image && /^data:image\/(jpeg|png|webp);base64,/.test(item.image)){const img=document.createElement('img');img.src=item.image;img.alt=item.title;img.style.cssText='width:100%;max-height:340px;object-fit:contain;border-radius:16px;margin-bottom:12px';result.append(img);}for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}}
+    const bags = {all:[]}; const last={}; let fortuneDrawing=false;
+    async function drawFortune(mode){
+      if(fortuneDrawing)return;
+      const list=fortunes[mode];
+      const result=document.getElementById('fortuneResult');
+      const jar=document.querySelector('.stick-jar');
+      const sticks=[...document.querySelectorAll('.stick-jar .stick')];
+      const drawButton=document.querySelector('button[onclick*="drawFortune"]');
+      if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}
+      fortuneDrawing=true;
+      if(drawButton)drawButton.disabled=true;
+      if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}
+      const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];
+      jar?.classList.remove('drawing');jar?.classList.add('shaking');
+      result.textContent='กำลังเขย่าเซียมซี… ขอให้ได้ใบที่ถูกใจนะ 💗';
+      await new Promise(resolve=>setTimeout(resolve,1700));
+      jar?.classList.remove('shaking');
+      const selected=sticks[Math.floor(Math.random()*sticks.length)];
+      if(selected){selected.classList.add('selected');jar?.classList.add('drawing');}
+      await new Promise(resolve=>setTimeout(resolve,750));
+      jar?.classList.remove('drawing');sticks.forEach(stick=>stick.classList.remove('selected'));
+      result.replaceChildren();
+      if(item.image && /^data:image\/(jpeg|png|webp);base64,/.test(item.image)){const img=document.createElement('img');img.src=item.image;img.alt=item.title;img.style.cssText='width:100%;max-height:340px;object-fit:contain;border-radius:16px;margin-bottom:12px';result.append(img);}
+      for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}
+      fortuneDrawing=false;if(drawButton)drawButton.disabled=false;
+    }
     const riverPond=document.querySelector('.pond');
     const themes=[['#f9a6cd','#d85b98','#5c9e65','lotus'],['#e9c6ff','#9570c5','#699d8d','flower'],['#fff1c4','#e5a84e','#72a54c','leaf'],['#ff9cae','#cb507b','#6aaf79','heart'],['#ace7ef','#559eae','#559a7e','flower'],['#fff1e8','#e590ae','#477b54','lotus'],['#ffcf73','#e98938','#519468','flower'],['#cbd4ff','#7a8dd9','#6c9c70','leaf']];
     function hashId(str){let h=0;for(const c of str)h=(Math.imul(h,31)+c.charCodeAt(0))>>>0;return h;}
@@ -679,18 +690,18 @@ header.hero #eventTitle .heart-icon {position:absolute; left:100%; top:50%; tran
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
 import {getAuth,onAuthStateChanged,signInAnonymously,signInWithEmailAndPassword,signOut} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import {getFirestore,collection,doc,addDoc,setDoc,deleteDoc,updateDoc,onSnapshot,query,where,limit,serverTimestamp} from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
-const app=initializeApp({apiKey:"AIzaSyDg1ofc2G7_8aCklBf_xg2uVE9-LBsv-lA",authDomain:"cooheart-loykrathong.firebaseapp.com",projectId:"cooheart-loykrathong",storageBucket:"cooheart-loykrathong.firebasestorage.app",messagingSenderId:"178150379025",appId:"1:178150379025:web:f59fceecf642cf8f5aebb0"});
+const app=initializeApp({apiKey:"AIzaSyDg1ofc2G7_8aCklBf_xg2uVE9-LBsv-lA",authDomain:" COOHEART -loykrathong.firebaseapp.com",projectId:" COOHEART -loykrathong",storageBucket:" COOHEART -loykrathong.firebasestorage.app",messagingSenderId:"178150379025",appId:"1:178150379025:web:f59fceecf642cf8f5aebb0"});
 const auth=getAuth(app),db=getFirestore(app),adminUID='eMlyMmMMPraxQrRDUySmE3DUa6s1';
 const $=id=>document.getElementById(id),{fortunes,bags,syncRiver}=window.siteData;
 const isAdmin=()=>auth.currentUser?.uid===adminUID;const status=t=>$('adminStatus').textContent=t;const msg=t=>$('launchMessage').textContent=t;
 const button=(label,fn)=>{const b=document.createElement('button');b.className='btn primary';b.textContent=label;b.onclick=async()=>{b.disabled=true;try{await fn()}catch(e){status('ไม่สำเร็จ: '+e.code)}finally{b.disabled=false}};return b};
 let stopAdmin=()=>{},guestPromise=null,sending=false;
 function guest(){if(auth.currentUser)return Promise.resolve(auth.currentUser);if(!guestPromise)guestPromise=signInAnonymously(auth).then(x=>x.user).finally(()=>guestPromise=null);return guestPromise;}
-onAuthStateChanged(auth,u=>{stopAdmin();const admin=u?.uid===adminUID;$('adminPanel').hidden=!admin;$('adminLogin').hidden=admin;if(admin){status('เข้าสู่ระบบแอดมินแล้ว');stopAdmin=onSnapshot(query(collection(db,'wishes'),limit(1000)),snap=>{$('moderation').replaceChildren();for(const d of snap.docs){const w=d.data(),a=document.createElement('article');a.textContent=(w.approved?'✅ อนุมัติแล้ว: ':'⏳ รออนุมัติ: ')+w.name+' — '+w.wish;a.append(button(w.approved?'ซ่อน':'อนุมัติ',()=>updateDoc(d.ref,{approved:!w.approved})),button('ลบ',()=>{if(confirm('ลบคำอธิษฐานนี้?'))return deleteDoc(d.ref)}));$('moderation').append(a)}},e=>status(e.code));refreshEditor();}});
+onAuthStateChanged(auth,u=>{stopAdmin();const admin=u?.uid===adminUID;$('adminPanel').hidden=!admin;$('adminLogin').hidden=admin;if(admin){status('เข้าสู่ระบบแอดมินแล้ว');stopAdmin=onSnapshot(query(collection(db,'wishes'),limit(200)),snap=>{$('moderation').replaceChildren();for(const d of snap.docs){const w=d.data(),a=document.createElement('article');a.textContent=(w.approved?'✅ อนุมัติแล้ว: ':'⏳ รออนุมัติ: ')+w.name+' — '+w.wish;a.append(button(w.approved?'ซ่อน':'อนุมัติ',()=>updateDoc(d.ref,{approved:!w.approved})),button('ลบ',()=>{if(confirm('ลบคำอธิษฐานนี้?'))return deleteDoc(d.ref)}));$('moderation').append(a)}},e=>status(e.code));refreshEditor();}});
 $('loginBtn').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('adminEmail').value.trim(),$('adminPassword').value);$('adminPassword').value='';if(!isAdmin()){await signOut(auth);status('บัญชีนี้ไม่มีสิทธิ์แอดมิน')}}catch(e){status('เข้าสู่ระบบไม่ได้: '+e.code)}};
 $('logoutBtn').onclick=async()=>{await signOut(auth);status('ออกจากระบบแล้ว')};
 window.launchKrathong=async()=>{const wish=$('wishInput').value.trim(),name=$('wishName').value.trim();if(!wish){msg('เขียนคำอธิษฐานก่อนนะ');return}if(sending)return;sending=true;try{const u=await guest();await addDoc(collection(db,'wishes'),{name:name||'แฟนคลับ',wish,uid:u.uid,approved:true,createdAt:serverTimestamp()});$('wishInput').value='';msg('ส่งกระทงแล้ว ♡ ทุกคนเห็นคำอธิษฐานได้เลย')}catch(e){msg('ส่งไม่สำเร็จ กรุณาลองอีกครั้ง: '+e.code)}finally{sending=false}};
-onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(1000)),snap=>{const items=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));syncRiver(items);},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
+onSnapshot(query(collection(db,'wishes'),where('approved','==',true),limit(100)),snap=>{const list=$('sharedWishes');list.replaceChildren();const items=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));for(const w of items){const a=document.createElement('article');a.textContent='🪷 '+w.name+' : '+w.wish;list.append(a);}syncRiver(items);},e=>msg('โหลดแม่น้ำไม่ได้: '+e.code));
 let editImage='';function previewImage(){const p=$('fPreview');p.hidden=!editImage;if(editImage)p.src=editImage;else p.removeAttribute('src');} $('clearImage').onclick=()=>{editImage='';$('fImage').value='';previewImage()};$('fImage').onchange=async()=>{const file=$('fImage').files[0];if(!file)return;try{const img=await createImageBitmap(file);const c=document.createElement('canvas');const scale=Math.min(1,800/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();const data=c.toDataURL('image/jpeg',0.75);if(data.length>600000)throw Error('รูปใหญ่เกินไป');editImage=data;previewImage();status('เลือกรูปแล้ว กดบันทึกใบเซียมซี')}catch(e){status('เปิดรูปไม่ได้: '+e.message)}};const original=JSON.parse(JSON.stringify(fortunes));let overrides={};function rebuild(){for(const team of Object.keys(original)){const map=new Map(original[team].map((f,i)=>[team+'-'+i,{...f,id:team+'-'+i}]));for(const [id,f] of Object.entries(overrides)){if(f.team!==team||!map.has(id)||f.deleted)continue;map.set(id,{...f,id})}fortunes[team]=[...map.values()];bags[team]=[]}refreshEditor()}
 onSnapshot(collection(db,'fortunes'),snap=>{overrides={};for(const d of snap.docs)overrides[d.id]=d.data();rebuild()},e=>status('โหลดเซียมซีไม่ได้: '+e.code));
 function refreshEditor(){const team=$('teamEdit').value,sel=$('fortuneEdit'),prev=sel.value;sel.replaceChildren();for(const f of fortunes[team]){const o=document.createElement('option');o.value=f.id||team+'-'+fortunes[team].indexOf(f);o.textContent=f.title;sel.append(o)}if([...sel.options].some(o=>o.value===prev))sel.value=prev;fillEditor()}
@@ -698,43 +709,10 @@ function fillEditor(){const f=fortunes[$('teamEdit').value][$('fortuneEdit').sel
 $('teamEdit').onchange=refreshEditor;$('fortuneEdit').onchange=fillEditor;
 async function saveFortune(add){if(!isAdmin())return;const team=$('teamEdit').value,title=$('fTitle').value.trim(),text=$('fText').value.trim(),bonus=$('fBonus').value.trim();if(!title||!text||!bonus){status('กรอกข้อมูลเซียมซีให้ครบ');return}const id=add?doc(collection(db,'fortunes')).id:$('fortuneEdit').value;if(!id)return;try{await setDoc(doc(db,'fortunes',id),{team,title,text,bonus,image:editImage,deleted:false});status('บันทึกเซียมซีแล้ว')}catch(e){status(e.code)}}
 $('saveFortune').onclick=()=>saveFortune(false);
-const titleEl=$('eventTitle');
-const defaultTitle='ลอยกระทงกับ\nCOOHEART\n ไปด้วยกัน 💗';
-function renderTitle(value){
-  const saved=(typeof value==='string'&&value.trim()?value.trim():defaultTitle);
-  const text=/cooheart/i.test(saved)?saved:defaultTitle;
-  const normalized=text.replace(/\s*(COOHEART)\s*/gi,'\n$1\n').split('\n').map(x=>x.trim()).filter(Boolean).join('\n');
-  titleEl.replaceChildren();
-  normalized.split('\n').forEach(line=>{
-    const row=document.createElement('span'); row.className='title-line';
-    if(/^cooheart$/i.test(line)){row.classList.add('name');row.textContent='COOHEART';}
-    else if(line.endsWith('💗')){
-      const label=document.createElement('span');label.className='last-line';label.textContent=line.slice(0,-2).trim();
-      const heart=document.createElement('span');heart.className='heart-icon';heart.textContent='💗';label.append(heart);row.append(label);
-    }else{row.textContent=line;}
-    titleEl.append(row);
-  });
-  $('titleEdit').value=normalized;
-}
-renderTitle(defaultTitle);
-onSnapshot(doc(db,'settings','site'),d=>{renderTitle(d.data()?.title);},e=>status(e.code));
-$('saveTitle').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','site'),{title:/cooheart/i.test($('titleEdit').value)?$('titleEdit').value.trim():defaultTitle},{merge:true});status('บันทึกชื่อเว็บแล้ว')}catch(e){status(e.code)}};
+const titleEl=$('eventTitle');if(titleEl){$('titleEdit').value=titleEl.textContent;onSnapshot(doc(db,'settings','site'),d=>{if(d.exists()&&typeof d.data().title==='string'){titleEl.textContent=d.data().title;$('titleEdit').value=d.data().title}},e=>status(e.code));}
+$('saveTitle').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','site'),{title:$('titleEdit').value.trim()});status('บันทึกชื่อเว็บแล้ว')}catch(e){status(e.code)}};
 
 onSnapshot(doc(db,'settings','hero'),d=>{const p=$('heroPhoto'),v=d.data()?.image||'';p.hidden=!/^data:image\/(jpeg|png|webp);base64,/.test(v);if(!p.hidden)p.src=v;else p.removeAttribute('src');},e=>status(e.code));
 $('saveHero').onclick=async()=>{if(!isAdmin())return;try{const file=$('heroFile').files[0];if(!file){status('เลือกรูปก่อน');return}const img=await createImageBitmap(file);const c=document.createElement('canvas'),scale=Math.min(1,800/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();const image=c.toDataURL('image/jpeg',.75);if(image.length>600000)throw Error('รูปใหญ่เกินไป');await setDoc(doc(db,'settings','hero'),{image});status('บันทึกรูปหลักแล้ว')}catch(e){status('บันทึกไม่ได้: '+(e.code||e.message))}};
 $('removeHero').onclick=async()=>{if(isAdmin())try{await setDoc(doc(db,'settings','hero'),{image:''});status('ลบรูปหลักแล้ว')}catch(e){status(e.code)}};
-const bgTargets={page:document.body,hero:document.querySelector('.hero'),river:document.querySelector('.pond')};
-const bgValues={page:'',hero:'',river:''};
-const validImage=v=>typeof v==='string'&&/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(v);
-function bgPreview(){const p=$('bgPreview'),v=bgValues[$('bgTarget').value];p.hidden=!validImage(v);if(!p.hidden)p.src=v;else p.removeAttribute('src');}
-for(const [key,el] of Object.entries(bgTargets)){onSnapshot(doc(db,'settings','background-'+key),d=>{const v=d.data()?.image||'';bgValues[key]=validImage(v)?v:'';if(bgValues[key]){el.style.backgroundImage=`linear-gradient(${key==='hero'?'rgba(32,21,58,.45),rgba(32,21,58,.55)':'rgba(30,24,65,.18),rgba(30,24,65,.18)'}),url("${v}")`;el.style.backgroundSize='cover';el.style.backgroundPosition='center';if(key==='page')el.style.backgroundAttachment='fixed';}else{for(const prop of ['background-image','background-size','background-position','background-attachment'])el.style.removeProperty(prop);}if($('bgTarget').value===key)bgPreview();},e=>status('โหลดพื้นหลังไม่ได้: '+e.code));}
-$('bgTarget').onchange=()=>{$('bgFile').value='';bgPreview()};
-$('saveBg').onclick=async()=>{if(!isAdmin())return;const key=$('bgTarget').value,file=$('bgFile').files[0];if(!file){status('เลือกรูปพื้นหลังก่อน');return}try{const img=await createImageBitmap(file);const c=document.createElement('canvas'),scale=Math.min(1,1500/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();let image=c.toDataURL('image/jpeg',.8);if(image.length>800000)image=c.toDataURL('image/jpeg',.55);if(image.length>800000)throw Error('รูปใหญ่เกินไป');await setDoc(doc(db,'settings','background-'+key),{image});$('bgFile').value='';status('บันทึกภาพพื้นหลังแล้ว')}catch(e){status('บันทึกไม่ได้: '+(e.code||e.message))}};
-$('clearBg').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','background-'+$('bgTarget').value),{image:''});$('bgFile').value='';status('คืนภาพพื้นหลังเดิมแล้ว')}catch(e){status(e.code)}};
-const defaults={pink:'#ffb8d7',heading:'#674a86',card:'#fffaf7',opacity:90};
-const color=(v,f)=>typeof v==='string'&&/^#[0-9a-f]{6}$/i.test(v)?v:f;
-const themeFields={pink:'themePink',heading:'themeHeading',card:'themeCard',opacity:'themeOpacity'};
-onSnapshot(doc(db,'settings','theme'),d=>{const v=d.data()||{},t={pink:color(v.pink,defaults.pink),heading:color(v.heading,defaults.heading),card:color(v.card,defaults.card),opacity:Math.min(100,Math.max(75,Number(v.opacity)||90))};for(const [k,id] of Object.entries(themeFields))$(id).value=t[k];const root=document.documentElement.style;root.setProperty('--pink',t.pink);root.setProperty('--heading-custom',t.heading);root.setProperty('--card',`rgba(${parseInt(t.card.slice(1,3),16)},${parseInt(t.card.slice(3,5),16)},${parseInt(t.card.slice(5,7),16)},${t.opacity/100})`);},e=>status(e.code));
-$('saveTheme').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','theme'),{pink:$('themePink').value,heading:$('themeHeading').value,card:$('themeCard').value,opacity:Number($('themeOpacity').value)});status('บันทึกสีแล้ว')}catch(e){status(e.code)}};
-$('resetTheme').onclick=async()=>{if(!isAdmin())return;try{await setDoc(doc(db,'settings','theme'),defaults);status('คืนสีเดิมแล้ว')}catch(e){status(e.code)}};
 </script></body></html>
