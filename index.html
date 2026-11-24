@@ -496,7 +496,19 @@
 
 h2{color:var(--heading-custom,#674a86)}
 #eventTitle{white-space:pre-line;overflow-wrap:anywhere}
-</style>
+
+  #eventTitle .last-line {
+  position: relative;
+  display: inline-block;
+}
+
+#eventTitle .heart-icon {
+  position: absolute;
+  left: 100%;
+  margin-left: 12px;
+  font-size: 0.65em;
+}
+  </style>
 </head>
 <body>
   <div class="stars"></div>
@@ -515,7 +527,11 @@ h2{color:var(--heading-custom,#674a86)}
     <div class="moon"></div>
     <div class="hero-inner">
       <div class="chip">🪷 คืนนี้ถวายใจให้ COOHEART  และถวายกระทงให้สายน้ำ 🪷</div>
-      <h1 id="eventTitle">ลอยกระทงกับ<br><span class="name">COOHEART</span><br>พร้อมเสี่ยงเซียมซี 💗</h1>
+      <h1 id="eventTitle">
+  ลอยกระทงกับ<br>
+  <span class="name">COOHEART</span><br>
+  <span class="last-line">พร้อมเสี่ยงเซียมซี<span class="heart-icon">💗</span></span>
+</h1>
       <p class="subtitle">
 มาร่วมอวยพรให้กับ  COOHEART  ไปด้วยกัน ✨
       </p>
@@ -681,7 +697,28 @@ function renderTitle(value){
   const text=(typeof value==='string'&&value.trim()?value.trim():defaultTitle);
   const normalized=text.replace(/\s*(COOHEART)\s*/gi,'\n$1\n').split('\n').map(x=>x.trim()).filter(Boolean).join('\n');
   titleEl.replaceChildren();
-  normalized.split('\n').forEach((line,i)=>{if(i)titleEl.append(document.createElement('br'));if(/^cooheart$/i.test(line)){const span=document.createElement('span');span.className='name';span.textContent='COOHEART';titleEl.append(span);}else titleEl.append(document.createTextNode(line));});
+  normalized.split('\n').forEach((line,i)=>{
+  if(i) titleEl.append(document.createElement('br'));
+
+  const span=document.createElement('span');
+
+  if(/^cooheart$/i.test(line)){
+    span.className='name';
+    span.textContent='COOHEART';
+  }else if(line.includes('💗')){
+    span.className='last-line';
+    span.textContent=line.replace('💗','').trim();
+
+    const heart=document.createElement('span');
+    heart.className='heart-icon';
+    heart.textContent='💗';
+    span.append(heart);
+  }else{
+    span.textContent=line;
+  }
+
+  titleEl.append(span);
+});
   $('titleEdit').value=normalized;
 }
 renderTitle(defaultTitle);
