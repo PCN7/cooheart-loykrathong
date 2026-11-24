@@ -495,23 +495,16 @@
 @media(prefers-reduced-motion:reduce){.krathong.river-boat{animation:none;transform:translateX(var(--static-x));}.river-boat .krathong-emoji{animation:none}}
 
 
-
-    /* เอฟเฟกต์เขย่าเซียมซี: ใช้ทั้งการสั่นของกระบอกและไม้ */
-    .stick-jar.shaking{
-      animation: jar-shake .12s ease-in-out infinite !important;
-      transform-origin: center center;
-      border-color:#e69abb;
-      box-shadow:0 0 0 4px rgba(255,184,215,.22),0 12px 28px rgba(125,76,115,.16);
-    }
-    .stick-jar.shaking .sticks{animation: sticks-jostle .12s ease-in-out infinite;}
-    .stick-jar.shaking .stick{animation: stick-rattle .14s ease-in-out infinite alternate !important;}
-    .stick-jar.shaking .stick:nth-child(even){animation-delay:-.07s !important;}
-    .stick-jar.drawing .stick.selected{animation: stick-pop .75s cubic-bezier(.2,.8,.2,1) forwards !important;z-index:5;background:linear-gradient(180deg,#fff0a8,#d58a3f);box-shadow:0 0 18px #ffd56f;}
-    @keyframes jar-shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-13px) rotate(-3deg)}75%{transform:translateX(13px) rotate(3deg)}}
-    @keyframes sticks-jostle{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-8px) rotate(-3deg)}75%{transform:translateX(8px) rotate(3deg)}}
-    @keyframes stick-rattle{from{transform:translateY(0) rotate(-17deg)}to{transform:translateY(-23px) rotate(17deg)}}
-    @keyframes stick-pop{0%{transform:translateY(0) rotate(0);opacity:1}55%{transform:translateY(-85px) rotate(14deg);opacity:1}100%{transform:translateY(-125px) rotate(24deg);opacity:0}}
+    /* เอฟเฟกต์เขย่ากระบอกเซียมซี */
+    .stick-jar.shaking{animation:jar-shake .11s ease-in-out infinite;}
+    .stick-jar.shaking .stick{animation:stick-rattle .16s ease-in-out infinite alternate;}
+    .stick-jar.shaking .stick:nth-child(even){animation-delay:-.08s;}
+    .stick-jar.drawing .stick.selected{animation:stick-pop .8s cubic-bezier(.2,.8,.2,1) forwards;z-index:3;background:linear-gradient(180deg,#ffe9a3,#d58a3f);box-shadow:0 0 18px #ffd56f;}
+    @keyframes jar-shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-7px) rotate(-2deg)}75%{transform:translateX(7px) rotate(2deg)}}
+    @keyframes stick-rattle{from{transform:translateY(0) rotate(-12deg)}to{transform:translateY(-16px) rotate(12deg)}}
+    @keyframes stick-pop{0%{transform:translateY(0) rotate(0);opacity:1}55%{transform:translateY(-78px) rotate(12deg);opacity:1}100%{transform:translateY(-115px) rotate(22deg);opacity:0}}
     .stick-jar.shaking .floating-note{background:#d98ab4;color:#fff;}
+    @media(prefers-reduced-motion:reduce){.stick-jar.shaking,.stick-jar.shaking .stick,.stick-jar.drawing .stick.selected{animation-duration:.01ms;animation-iteration-count:1}}
 
 </style>
 </head>
@@ -646,34 +639,32 @@
   <script>
     const fortunes = {"all": [{"title": "ใบที่ 01 : โพหมาเด็ก 🐶", "text": "ดวงวันนี้แพ้ทางความขี้อ้อน เห็น COOHEART ยิ้มทีเดียวก็พร้อมโยนขนมให้ทั้งถุง", "bonus": "พูด “น้อง COOHEART ค้าบ เด็กดีของพี่” 3 ครั้ง แล้วห้ามใจอ่อน (ไม่น่ารอด)", "image": ""}, {"title": "ใบที่ 02 : โพพี่สาวคนสวย 🎀", "text": "ความสวยของพี่สาวทำให้กล้องหน้าของคุณอยากขอลาพักร้อน", "bonus": "กล่าว “พี่ COOHEART คนสวยขา สวยจนหนูไม่มีคำศัพท์แล้วค่ะ”", "image": ""}, {"title": "ใบที่ 03 : โพแฟนหนุ่ม 💐", "text": "มีเกณฑ์มโนเดตใต้แสงจันทร์ แต่คู่เดตจริงคือหมอนข้าง", "bonus": "บอก “แฟนหนุ่มคะ ฝันดีนะคะ” กับรูป COOHEART หนึ่งครั้ง", "image": ""}, {"title": "ใบที่ 04 : โพเฮีย COOHEART  🕶️", "text": "เฮียหล่อหนึ่งที สติหลุดสามที", "bonus": "ท่อง “เฮีย COOHEART ขา รักเฮียที่สุด” 3 รอบ", "image": ""}, {"title": "ใบที่ 05 : โพลูกน้อย 🍼", "text": "เห็นแก้มแล้วอยากซื้อขนมให้ทั้งร้าน", "bonus": "พูด “ลูกแม่กินข้าวเยอะ ๆ นะ” แล้วอย่าลืมกินเอง", "image": ""}, {"title": "ใบที่ 06 : โพคุณหนู 👑", "text": "ดวงคุณหนูมาแรง ส่วนคุณเป็นคนถือถุงช้อปปิ้งในจินตนาการ", "bonus": "กล่าว “คุณหนู COOHEART ขา วันนี้สวยอีกแล้วค่ะ”", "image": ""}, {"title": "ใบที่ 07 : โพแฟนสาว 🌷", "text": "ความหวานขึ้นสูงจนชาไข่มุกต้องสั่งหวานศูนย์", "bonus": "บอก “แฟนสาวคนสวยขา รักนะคะ”", "image": ""}, {"title": "ใบที่ 08 : โพพี่ชาย 🤍", "text": "วันนี้มีเกณฑ์อยากให้พี่ชม ทั้งที่ยังไม่ได้ทำอะไร", "bonus": "พูด “พี่ COOHEART ค้าบ หนูเก่งไหม” แล้วชมตัวเองด้วย", "image": ""}, {"title": "ใบที่ 09 : โพแมวส้ม 🐈", "text": "ความซนทำให้คุณหัวเราะจนลืมเรื่องเครียด", "bonus": "พูด “ COOHEART เหมียว ๆ” หนึ่งครั้งแล้วส่งหัวใจ", "image": ""}, {"title": "ใบที่ 10 : โพเจ้าหญิง 👸", "text": "คืนนี้เจ้าหญิงสวยจนพระจันทร์ต้องหลบให้", "bonus": "กล่าว “เจ้าหญิง COOHEART ทรงพระสวยค่ะ”", "image": ""}, {"title": "ใบที่ 11 : โพหนุ่มแว่น 🤓", "text": "แว่นหนึ่งอันทำให้คุณอ่านหนังสือไม่รู้เรื่อง", "bonus": "บอก “พี่ COOHEART ช่วยสอนวิชาใจแข็งหน่อยค่ะ”", "image": ""}, {"title": "ใบที่ 12 : โพตัวแม่ 💅", "text": "วันนี้คำว่าเริ่ดไม่พอ ต้องเพิ่มไม้เอกอีกสิบตัว", "bonus": "กล่าว “ตัวแม่ COOHEART  เริ่ดที่สุดค่ะ”", "image": ""}, {"title": "ใบที่ 13 : โพเพื่อนสาว 💌", "text": "มีเกณฑ์เมาท์เรื่อง COOHEART กับเพื่อนจนลืมเวลา", "bonus": "พูด “แก  COOHEART สวยมาก!” แล้วส่งข้อความหาเพื่อนหนึ่งคน", "image": ""}, {"title": "ใบที่ 14 : โพน้องเล็ก 🐣", "text": "ใจคุณนุ่มเหมือนขนมปังเมื่อเห็นน้องยิ้ม", "bonus": "ท่อง “น้อง COOHEART น่ารักที่สุดในโลก”", "image": ""}, {"title": "ใบที่ 15 : โพเจ้าชาย 🌙", "text": "ดวงโรแมนติกพุ่ง แต่ยังต้องล้างจานเอง", "bonus": "กล่าว “เจ้าชาย COOHEART ขา ขอให้คืนนี้ฝันดี”", "image": ""}, {"title": "ใบที่ 16 : โพหวานใจ 🍓", "text": "หัวใจหวานกว่าขนมทุกชนิดในงานวัด", "bonus": "บอก “หวานใจ COOHEART  รักนะ” แล้วดื่มน้ำหนึ่งแก้ว", "image": ""}, {"title": "ใบที่ 17 : โพสายแฟ 👠", "text": "เห็นลุคใหม่แล้วอยากปรบมือให้จนมือแดง", "bonus": "พูด “ COOHEART คะ ชุดนี้สิบเต็มสิบ!”", "image": ""}, {"title": "ใบที่ 18 : โพคนโปรด ⭐", "text": "ดวงดีเพราะมีคนโปรดให้ยิ้มถึงทุกวัน", "bonus": "กล่าว “ COOHEART คนโปรด ขอให้มีความสุขทุกวัน”", "image": ""}, {"title": "ใบที่ 19 : โพไหล 🌊", "text": "โพเปลี่ยนเร็วกว่ากระทงลอยตามน้ำ", "bonus": "ท่อง “เฮียหล่อ พี่สาวสวย หมาเด็กน่ารัก” ให้ครบ", "image": ""}, {"title": "ใบที่ 20 : โพไม่มีจุดยืน 🤣", "text": "จักรวาลประชุมแล้วลงมติว่า COOHEART ดีทุกโพ", "bonus": "ประกาศ “รัก COOHEART ทุกโพค่ะ แต่ขอมีเงินเหลือกินข้าวด้วย สาธุ”", "image": ""}]};
 
-    const bags = {all:[]}; const last={};
-    let fortuneDrawing=false;
+    const bags = {all:[]}; const last={}; let fortuneDrawing=false;
     async function drawFortune(mode){
       if(fortuneDrawing)return;
       const list=fortunes[mode];
       const result=document.getElementById('fortuneResult');
       const jar=document.querySelector('.stick-jar');
       const sticks=[...document.querySelectorAll('.stick-jar .stick')];
-      const button=document.querySelector('button[onclick*=\"drawFortune\"]');
-      if(!list || !list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}
-      fortuneDrawing=true;if(button)button.disabled=true;
-      try{
-        if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}
-        const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];
-        jar.classList.remove('drawing');jar.classList.add('shaking');
-        result.textContent='กำลังเขย่าเซียมซี… ขอให้ได้ใบที่ถูกใจนะ 💗';
-        await new Promise(resolve=>setTimeout(resolve,1900));
-        jar.classList.remove('shaking');
-        const selected=sticks[Math.floor(Math.random()*sticks.length)];
-        if(selected){selected.classList.add('selected');jar.classList.add('drawing');}
-        await new Promise(resolve=>setTimeout(resolve,800));
-        jar.classList.remove('drawing');sticks.forEach(stick=>stick.classList.remove('selected'));
-        result.replaceChildren();
-        if(item.image && /^data:image\/(jpeg|png|webp);base64,/.test(item.image)){const img=document.createElement('img');img.src=item.image;img.alt=item.title;img.style.cssText='width:100%;max-height:340px;object-fit:contain;border-radius:16px;margin-bottom:12px';result.append(img);}
-        for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}
-      }finally{jar.classList.remove('shaking','drawing');sticks.forEach(stick=>stick.classList.remove('selected'));fortuneDrawing=false;if(button)button.disabled=false;}
+      const drawButton=document.querySelector('button[onclick*="drawFortune"]');
+      if(!list.length){result.textContent='ยังไม่มีใบเซียมซี';return;}
+      fortuneDrawing=true;
+      if(drawButton)drawButton.disabled=true;
+      if(!bags[mode].length){bags[mode]=list.map((_,i)=>i);for(let i=bags[mode].length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bags[mode][i],bags[mode][j]]=[bags[mode][j],bags[mode][i]];}if(list.length>1&&bags[mode].at(-1)===last[mode]){const b=bags[mode];[b[0],b[b.length-1]]=[b[b.length-1],b[0]];}}
+      const idx=bags[mode].pop();last[mode]=idx;const item=list[idx];
+      jar?.classList.remove('drawing');jar?.classList.add('shaking');
+      result.textContent='กำลังเขย่าเซียมซี… ขอให้ได้ใบที่ถูกใจนะ 💗';
+      await new Promise(resolve=>setTimeout(resolve,1700));
+      jar?.classList.remove('shaking');
+      const selected=sticks[Math.floor(Math.random()*sticks.length)];
+      if(selected){selected.classList.add('selected');jar?.classList.add('drawing');}
+      await new Promise(resolve=>setTimeout(resolve,750));
+      jar?.classList.remove('drawing');sticks.forEach(stick=>stick.classList.remove('selected'));
+      result.replaceChildren();
+      if(item.image && /^data:image\/(jpeg|png|webp);base64,/.test(item.image)){const img=document.createElement('img');img.src=item.image;img.alt=item.title;img.style.cssText='width:100%;max-height:340px;object-fit:contain;border-radius:16px;margin-bottom:12px';result.append(img);}
+      for(const [txt,cls] of [[item.title,'fortune-title'],[item.text,''],['เสริมดวงคืนนี้: '+item.bonus,''],[`เปิดแล้ว ${list.length-bags[mode].length}/${list.length} ใบ · เหลือ ${bags[mode].length} ใบ`,'']]){const d=document.createElement('div');d.className=cls;d.textContent=txt;result.append(d);}
+      fortuneDrawing=false;if(drawButton)drawButton.disabled=false;
     }
-    window.drawFortune=drawFortune;
     const riverPond=document.querySelector('.pond');
     const themes=[['#f9a6cd','#d85b98','#5c9e65','lotus'],['#e9c6ff','#9570c5','#699d8d','flower'],['#fff1c4','#e5a84e','#72a54c','leaf'],['#ff9cae','#cb507b','#6aaf79','heart'],['#ace7ef','#559eae','#559a7e','flower'],['#fff1e8','#e590ae','#477b54','lotus'],['#ffcf73','#e98938','#519468','flower'],['#cbd4ff','#7a8dd9','#6c9c70','leaf']];
     function hashId(str){let h=0;for(const c of str)h=(Math.imul(h,31)+c.charCodeAt(0))>>>0;return h;}
