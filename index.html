@@ -526,7 +526,36 @@
   display: inline-block;
   margin-bottom: 8px;
 }
+/* ===== ระบบปรับพื้นหลังเว็บไซต์ ===== */
+body {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+}
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--site-bg-color, transparent);
+  background-image: var(
+    --site-bg-image,
+    linear-gradient(
+      180deg,
+      #26174c 0%,
+      #50327f 35%,
+      #7a64b3 62%,
+      #f8d7dc 87%,
+      #fff9f0 100%
+    )
+  );
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(var(--site-bg-brightness, 100%));
+}
 </style>
 </head>
 <body>
