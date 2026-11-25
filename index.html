@@ -802,20 +802,10 @@ body::before {
     syncSize();new ResizeObserver(syncSize).observe(riverPond);
    
 function syncRiver(items) {
-  // แสดงคำอธิษฐานทุกใบ โดยเรียงจากใบใหม่ไปใบเก่า
-  const display = items.map((x, i) => ({
-    ...x,
-    decor: false,
-    latest: i === 0
-  }));
-
-  // กระทงตกแต่งเปล่า ๆ ยังมีไว้เหมือนเดิม
+  // แสดงคำอธิษฐานใหม่ไปเก่า และเพิ่มกระทงตกแต่งเมื่อมีข้อความน้อย
+  const display = items.map((x, i) => ({ ...x, decor: false }));
   for (let i = 0; i < Math.max(0, 12 - display.length); i++) {
-    display.push({
-      id: 'decor-' + i,
-      decor: true,
-      latest: false
-    });
+    display.push({ id: 'decor-' + i, decor: true });
   }
 
   const wanted = new Set(display.map(x => x.id));
@@ -828,62 +818,53 @@ function syncRiver(items) {
     }
   }
 
+  const duration = 52;
+  const boatCount = Math.max(display.length, 1);
+
   display.forEach((w, i) => {
     let node = boats.get(w.id);
 
     if (!node) {
-      node = document
-        .getElementById('krathongTemplate')
+      node = document.getElementById('krathongTemplate')
         .content.firstElementChild.cloneNode(true);
-
       node.className = 'krathong river-boat';
 
       const h = hashId(w.id);
-
       node.querySelector('.krathong-emoji').innerHTML =
         boatArt(h % themes.length);
 
-      node.style.setProperty(
-        '--depth',
-        (10 + (i % 4) * 100) + 'px'
-      );
-
-      node.style.setProperty(
-        '--layer',
-        String(5 - i % 4)
-      );
-
-      node.style.setProperty(
-        '--duration',
-        (35 + (i % 4) * 6) + 's'
-      );
-
-      node.style.setProperty(
-        '--offset',
-        (-((i * 0.382) % 1) * (35 + (i % 4) * 6)) + 's'
-      );
-
-      node.style.setProperty(
-        '--boat-size',
-        (85 + (3 - i % 4) * 15) + 'px'
-      );
-
-      node.style.setProperty(
-        '--static-x',
-        ((i * 83) % Math.max(110, riverPond.clientWidth - 100)) + 'px'
-      );
+      // กระทงคำอธิษฐานใบใหม่สุดเด่นเพียงหนึ่งรอบการลอย
+      if (!w.decor && i === 0) {
+        node.classList.add('latest');
+        const finishHighlight = event => {
+          // รอให้แอนิเมชันลอยครบหนึ่งรอบจริง ๆ ไม่ใช่รอบกระดิกของตัวกระทง
+          if (event.target !== node || event.animationName !== 'river-drift') return;
+          node.classList.remove('latest');
+          node.removeEventListener('animationiteration', finishHighlight);
+        };
+        node.addEventListener('animationiteration', finishHighlight);
+      }
 
       riverPond.append(node);
       boats.set(w.id, node);
     }
 
-    // อัปเดตสถานะกระทงล่าสุดทุกครั้งที่มีข้อมูลใหม่
-    node.classList.toggle('latest', !!w.latest);
+    // แบ่งเป็น 4 ระดับความสูง และเหลื่อมเวลาให้กระทงในเลนเดียวกันไม่ชนกัน
+    const lane = i % 4;
+    node.style.setProperty('--depth', (12 + lane * 112) + 'px');
+    node.style.setProperty('--layer', String(8 - lane));
+    node.style.setProperty('--duration', duration + 's');
+    node.style.setProperty('--offset', (-(i * duration / boatCount)) + 's');
+    node.style.setProperty('--boat-size', (85 + (3 - lane) * 15) + 'px');
+    node.style.setProperty(
+      '--static-x',
+      ((i * 97) % Math.max(110, riverPond.clientWidth - 100)) + 'px'
+    );
+
     node.classList.toggle('decor', !!w.decor);
 
     if (!w.decor) {
       const text = (w.name || 'แฟนคลับ') + ' : ' + w.wish;
-
       node.querySelector('.wish-paper').textContent = text;
       node.title = text;
       node.tabIndex = 0;
@@ -897,24 +878,18 @@ function syncRiver(items) {
       };
 
       node.onclick = show;
-
       node.onkeydown = e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           show();
         }
-      }
+      };
     }
   });
 
   document.getElementById('riverCount').textContent =
-    `คำอวยพรทั้งหมด ${items.length} ข้อความ · ลอยครบทุกใบ · กระทงล่าสุดจะเด่นเป็นพิเศษ · แตะกระทงเพื่ออ่านข้อความ`;
+    `คำอวยพรทั้งหมด ${items.length} ข้อความ · กระทงล่าสุดเด่นหนึ่งรอบ · แตะกระทงเพื่ออ่านข้อความ`;
 }
-
-    display.forEach((w,i)=>{let node=boats.get(w.id);if(!node){node=document.getElementById('krathongTemplate').content.firstElementChild.cloneNode(true);node.className='krathong river-boat'+(w.decor?' decor':'');const h=hashId(w.id);node.querySelector('.krathong-emoji').innerHTML=boatArt(h%themes.length);node.style.setProperty('--depth',(10+(i%4)*100)+'px');node.style.setProperty('--layer',String(5-i%4));node.style.setProperty('--duration',(35+(i%4)*6)+'s');node.style.setProperty('--offset',(-((i*0.382)%1)*(35+(i%4)*6))+'s');node.style.setProperty('--boat-size',(85+(3-i%4)*15)+'px');node.style.setProperty('--static-x',((i*83)%Math.max(110,riverPond.clientWidth-100))+'px');riverPond.append(node);boats.set(w.id,node);}
-    if(!w.decor){const text=(w.name||'แฟนคลับ')+' : '+w.wish;node.querySelector('.wish-paper').textContent=text;node.title=text;node.tabIndex=0;node.setAttribute('role','button');node.setAttribute('aria-label','อ่านคำอวยพร '+text);const show=()=>{const detail=document.getElementById('riverDetail');detail.hidden=false;detail.textContent=text;};node.onclick=show;node.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}};}});
-    document.getElementById('riverCount').textContent=`คำอวยพรที่โหลด ${items.length} ข้อความ · ลอยวนครั้งละ ${selected.length} ใบ (สูงสุด 24 ใบ) · แตะกระทงเพื่ออ่านข้อความเต็ม`;
-    }
     let riverItems=[], riverPage=0;
     function updateRiver(items){riverItems=items;riverPage=0;syncRiver(items);}
     setInterval(()=>{if(riverItems.length>24){riverPage=(riverPage+12)%riverItems.length;syncRiver([...riverItems.slice(riverPage),...riverItems.slice(0,riverPage)]);}},45000);
