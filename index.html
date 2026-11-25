@@ -494,6 +494,28 @@
 @media(max-width:600px){.pond{min-height:500px}.river-boat .wish-paper{width:108px;font-size:.68rem}.krathong.river-boat{width:112px}.river-boat .krathong-emoji svg{max-width:105px}}
 @media(prefers-reduced-motion:reduce){.krathong.river-boat{animation:none;transform:translateX(var(--static-x));}.river-boat .krathong-emoji{animation:none}}
 
+/* กระทงคำอธิษฐานที่เพิ่งลอยล่าสุด */
+.krathong.river-boat.latest {
+  z-index: 30 !important;
+  --boat-size: 150px !important;
+  filter: drop-shadow(0 0 14px #ffd56f)
+          drop-shadow(0 0 22px #ffb8d7);
+}
+
+.krathong.river-boat.latest .wish-paper {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #fff0b8;
+  color: #674a86;
+  border: 2px solid #ffd56f;
+  box-shadow: 0 0 18px #ffd56f99;
+}
+
+/* กระทงล่าสุดมีประกายเด่น */
+.krathong.river-boat.latest .krathong-emoji {
+  filter: drop-shadow(0 0 12px #ffe69c);
+}
+
 
 
     /* เอฟเฟกต์เขย่าเซียมซี: ใช้ทั้งการสั่นของกระบอกและไม้ */
@@ -778,7 +800,117 @@ body::before {
     const boats=new Map();
     function syncSize(){riverPond.style.setProperty('--river-width',riverPond.clientWidth+'px');}
     syncSize();new ResizeObserver(syncSize).observe(riverPond);
-    function syncRiver(items){const max=24;const selected=items.slice(0,max);const display=selected.map(x=>({...x,decor:false}));for(let i=0;i<Math.max(0,12-display.length);i++)display.push({id:'decor-'+i,decor:true});const wanted=new Set(display.map(x=>x.id));for(const [id,node] of boats){if(!wanted.has(id)){node.remove();boats.delete(id);}}
+   
+function syncRiver(items) {
+  // แสดงคำอธิษฐานทุกใบ โดยเรียงจากใบใหม่ไปใบเก่า
+  const display = items.map((x, i) => ({
+    ...x,
+    decor: false,
+    latest: i === 0
+  }));
+
+  // กระทงตกแต่งเปล่า ๆ ยังมีไว้เหมือนเดิม
+  for (let i = 0; i < Math.max(0, 12 - display.length); i++) {
+    display.push({
+      id: 'decor-' + i,
+      decor: true,
+      latest: false
+    });
+  }
+
+  const wanted = new Set(display.map(x => x.id));
+
+  // ลบเฉพาะกระทงที่ไม่มีอยู่ในข้อมูลแล้ว
+  for (const [id, node] of boats) {
+    if (!wanted.has(id)) {
+      node.remove();
+      boats.delete(id);
+    }
+  }
+
+  display.forEach((w, i) => {
+    let node = boats.get(w.id);
+
+    if (!node) {
+      node = document
+        .getElementById('krathongTemplate')
+        .content.firstElementChild.cloneNode(true);
+
+      node.className = 'krathong river-boat';
+
+      const h = hashId(w.id);
+
+      node.querySelector('.krathong-emoji').innerHTML =
+        boatArt(h % themes.length);
+
+      node.style.setProperty(
+        '--depth',
+        (10 + (i % 4) * 100) + 'px'
+      );
+
+      node.style.setProperty(
+        '--layer',
+        String(5 - i % 4)
+      );
+
+      node.style.setProperty(
+        '--duration',
+        (35 + (i % 4) * 6) + 's'
+      );
+
+      node.style.setProperty(
+        '--offset',
+        (-((i * 0.382) % 1) * (35 + (i % 4) * 6)) + 's'
+      );
+
+      node.style.setProperty(
+        '--boat-size',
+        (85 + (3 - i % 4) * 15) + 'px'
+      );
+
+      node.style.setProperty(
+        '--static-x',
+        ((i * 83) % Math.max(110, riverPond.clientWidth - 100)) + 'px'
+      );
+
+      riverPond.append(node);
+      boats.set(w.id, node);
+    }
+
+    // อัปเดตสถานะกระทงล่าสุดทุกครั้งที่มีข้อมูลใหม่
+    node.classList.toggle('latest', !!w.latest);
+    node.classList.toggle('decor', !!w.decor);
+
+    if (!w.decor) {
+      const text = (w.name || 'แฟนคลับ') + ' : ' + w.wish;
+
+      node.querySelector('.wish-paper').textContent = text;
+      node.title = text;
+      node.tabIndex = 0;
+      node.setAttribute('role', 'button');
+      node.setAttribute('aria-label', 'อ่านคำอวยพร ' + text);
+
+      const show = () => {
+        const detail = document.getElementById('riverDetail');
+        detail.hidden = false;
+        detail.textContent = text;
+      };
+
+      node.onclick = show;
+
+      node.onkeydown = e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          show();
+        }
+      }
+    }
+  });
+
+  document.getElementById('riverCount').textContent =
+    `คำอวยพรทั้งหมด ${items.length} ข้อความ · ลอยครบทุกใบ · กระทงล่าสุดจะเด่นเป็นพิเศษ · แตะกระทงเพื่ออ่านข้อความ`;
+}
+
     display.forEach((w,i)=>{let node=boats.get(w.id);if(!node){node=document.getElementById('krathongTemplate').content.firstElementChild.cloneNode(true);node.className='krathong river-boat'+(w.decor?' decor':'');const h=hashId(w.id);node.querySelector('.krathong-emoji').innerHTML=boatArt(h%themes.length);node.style.setProperty('--depth',(10+(i%4)*100)+'px');node.style.setProperty('--layer',String(5-i%4));node.style.setProperty('--duration',(35+(i%4)*6)+'s');node.style.setProperty('--offset',(-((i*0.382)%1)*(35+(i%4)*6))+'s');node.style.setProperty('--boat-size',(85+(3-i%4)*15)+'px');node.style.setProperty('--static-x',((i*83)%Math.max(110,riverPond.clientWidth-100))+'px');riverPond.append(node);boats.set(w.id,node);}
     if(!w.decor){const text=(w.name||'แฟนคลับ')+' : '+w.wish;node.querySelector('.wish-paper').textContent=text;node.title=text;node.tabIndex=0;node.setAttribute('role','button');node.setAttribute('aria-label','อ่านคำอวยพร '+text);const show=()=>{const detail=document.getElementById('riverDetail');detail.hidden=false;detail.textContent=text;};node.onclick=show;node.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}};}});
     document.getElementById('riverCount').textContent=`คำอวยพรที่โหลด ${items.length} ข้อความ · ลอยวนครั้งละ ${selected.length} ใบ (สูงสุด 24 ใบ) · แตะกระทงเพื่ออ่านข้อความเต็ม`;
